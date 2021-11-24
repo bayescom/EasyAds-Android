@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".InterstitialActivity">
+
+    <Button
+        android:id="@+id/interstitial_load_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="loadAd"
+        android:text="加载插屏广告" />
+
+    <Button
+        android:id="@+id/interstitial_show_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="showAd"
+        android:text="展示插屏广告" />
+    <Button
+        android:id="@+id/interstitial_las_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:onClick="loadAndShowAd"
+        android:text="加载并展示插屏广告" />
+</LinearLayout>

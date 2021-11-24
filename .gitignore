@@ -1,0 +1,90 @@
+# Built application 文件
+*.apk
+*.ap_
+
+# ART/Dalvik VM 文件
+*.dex
+
+# Java class 文件
+*.class
+
+# Generated 文件夹
+bin/
+gen/
+out/
+
+# Gradle files
+.gradle/
+build/
+
+# 本地配置文件 (sdk path, etc)
+local.properties
+
+# Eclipse生成的Proguard文件夹
+proguard/
+
+# 日志文件
+*.log
+
+# Android Studio导航编辑器临时文件
+.navigation/
+
+# Android Studio captures folder
+captures/
+
+# IntelliJ (IDE配置文件)
+*.iml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/assetWizardSettings.xml
+.idea/dictionaries
+.idea/libraries
+.idea/caches
+
+# 密钥储存库文件
+# 如果您不想检查密钥库文件，请取消注释以下行
+#*.jks
+
+# 在Android Studio 2.2及更高版本中生成的外部原生构建文件夹
+.externalNativeBuild
+
+# Google服务 (e.g. APIs or Firebase)
+google-services.json
+
+# Freeline (Android 平台上的秒级编译方案)
+freeline.py
+freeline/
+freeline_project_description.json
+
+# fastlane (自动化打包框架)
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+fastlane/readme.md
+
+# .gitignore_global
+####################################
+######## OS generated files ########
+####################################
+.DS_Store
+.DS_Store?
+*.swp
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+####################################
+############# Packages #############
+####################################
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip

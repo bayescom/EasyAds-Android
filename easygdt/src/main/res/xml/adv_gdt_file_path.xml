@@ -1,0 +1,20 @@
+<paths xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="MissingDefaultResource">
+    <!-- 这个下载路径也不可以修改，必须为GDTDOWNLOAD -->
+    <external-path
+        name="gdt_sdk_download_path"
+        path="GDTDOWNLOAD" />
+    <external-files-path
+        name="external_files_path"
+        path="Download" />
+    <external-path
+        name="download"
+        path="." />
+    <external-cache-path
+        name="gdt_sdk_download_path1"
+        path="com_qq_e_download" />
+    <cache-path
+        name="gdt_sdk_download_path2"
+        path="com_qq_e_download" />
+</paths>

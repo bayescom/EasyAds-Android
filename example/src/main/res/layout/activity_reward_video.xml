@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/load_rewardvideo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:onClick="onLoad"
+        android:text="请求激励视频" />
+
+    <Button
+        android:id="@+id/show_rewardvideo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onShow"
+        android:text="展示激励视频" />
+
+
+    <Button
+        android:id="@+id/load_show_rewardvideo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="loadAndShow"
+        android:text="请求并展示激励视频" />
+</LinearLayout>

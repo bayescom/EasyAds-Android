@@ -1,0 +1,39 @@
+{
+  "rules": [
+    {
+      "tag": "A",
+      "sort": [
+        1,
+        2
+      ],
+      "percent": 50
+    },
+    {
+      "tag": "B",
+      "sort": [
+        3
+      ],
+      "percent": 50
+    }
+  ],
+  "suppliers": [
+    {
+      "tag": "csj",
+      "adspotid": "947107684",
+      "appid": "5051624",
+      "index": 1
+    },
+    {
+      "tag": "ylh",
+      "adspotid": "4080052898050840",
+      "appid": "1101152570",
+      "index": 2
+    },
+    {
+      "tag": "bd",
+      "adspotid": "2015351",
+      "appid": "e866cfb0",
+      "index": 3
+    }
+  ]
+}

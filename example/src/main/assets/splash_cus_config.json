@@ -1,0 +1,61 @@
+{
+  "rules": [
+    {
+      "tag": "A",
+      "sort": [
+        5,
+        1,
+        3
+      ],
+      "percent": 50
+    },
+    {
+      "tag": "B",
+      "sort": [
+        6,
+        2,
+        4
+      ],
+      "percent": 50
+    }
+  ],
+  "suppliers": [
+    {
+      "tag": "csj",
+      "adspotid": "887477661",
+      "appid": "5051624",
+      "index": 1
+    },
+    {
+      "tag": "ylh",
+      "adspotid": "2001447730515391",
+      "appid": "1101152570",
+      "index": 2
+    },
+    {
+      "tag": "ks",
+      "adspotid": "4000000042",
+      "appid": "90009",
+      "index": 3
+    },
+    {
+      "tag": "bd",
+      "adspotid": "2058622",
+      "appid": "e866cfb0",
+      "index": 4
+    },
+    {
+      "tag": "hw",
+      "adspotid2": "testq6zq98hecj",
+      "adspotid": "testd7c5cewoj6",
+      "appid": "",
+      "index": 5
+    },
+    {
+      "tag": "xm",
+      "adspotid": "94f4805a2d50ba6e853340f9035fda18",
+      "appid": "",
+      "index": 6
+    }
+  ]
+}

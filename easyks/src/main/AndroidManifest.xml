@@ -1,0 +1,14 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.easyads.supplier.ks">
+
+
+    <!--SDK内自定义的权限，与下载相关，aar中已经申请-->
+    <permission
+        android:name="${applicationId}.permission.KW_SDK_BROADCAST"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="${applicationId}.permission.KW_SDK_BROADCAST" />
+
+
+
+</manifest>

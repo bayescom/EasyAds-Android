@@ -1,0 +1,74 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.kezong.fat-aar'
+
+//maven依赖的项目名称
+def pomName = "easyads-core"
+def extVersionName = ""
+def VersionName = "${rootProject.ext.EasyAds_version}${extVersionName}"
+def VersionCode = 1
+
+def outputName = pomName + "_" + VersionName + ".aar"
+
+android {
+    compileSdkVersion 29
+
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 29
+        versionCode VersionCode
+        versionName VersionName
+
+//        混淆配置自动同步到接入方
+        consumerProguardFiles 'proguard-rules.pro'
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+    println pomName + " VersionName = " + VersionName
+
+}
+
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+}
+
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    compileOnly 'com.android.support:appcompat-v7:28.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //   the needed aars are here
+    compileOnly(name: 'open_ad_sdk_3803', ext: 'aar')
+    compileOnly(name: 'GDTSDK_4422', ext: 'aar')
+    compileOnly(name: 'Baidu_MobAds_SDK_9131', ext: 'aar')
+    compileOnly(name: 'kssdk-ad_3310', ext: 'aar')
+}
+
+
+android.libraryVariants.all { variant ->
+    variant.outputs.all {
+        outputFileName = outputName
+    }
+}
+
+
