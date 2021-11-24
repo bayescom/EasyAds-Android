@@ -59,7 +59,7 @@ public class CsjFullScreenVideoAdapter extends EAFullScreenCustomAdapter impleme
                 //模板广告需要设置期望个性化模板广告的大小,单位dp,激励视频场景，只要设置的值大于0即可
                 .setExpressViewAcceptedSize(500, 500)
                 .setSupportDeepLink(true)
-                .setDownloadType(EasyAdsManger.getInstance().csj_downloadType)
+                .setDownloadType(EasyCsjManger.getInstance().csj_downloadType)
                 .setOrientation(orientation)//必填参数，期望视频的播放方向：TTAdConstant.HORIZONTAL 或 TTAdConstant.VERTICAL
                 .build();
 

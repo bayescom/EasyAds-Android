@@ -99,7 +99,7 @@ public class CsjRewardVideoAdapter extends EARewardCustomAdapter implements TTAd
                 .setUserID(setting.getCsjUserId())
                 .setOrientation(setting.getOrientation())  //设置期望视频播放的方向，为TTAdConstant.HORIZONTAL或TTAdConstant.VERTICAL
                 .setMediaExtra(setting.getCsjMediaExtra()) //用户透传的信息，可不传
-                .setDownloadType(EasyAdsManger.getInstance().csj_downloadType)
+                .setDownloadType(EasyCsjManger.getInstance().csj_downloadType)
                 .build();
         ttAdNative.loadRewardVideoAd(adSlot, this);
     }

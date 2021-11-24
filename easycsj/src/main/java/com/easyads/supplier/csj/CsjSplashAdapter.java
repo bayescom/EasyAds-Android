@@ -65,13 +65,6 @@ public class CsjSplashAdapter extends EASplashCustomAdapter {
     }
 
     private void startLoadAD() {
-        final TTAdManager ttAdManager = TTAdSdk.getAdManager();
-        if (EasyAdsManger.getInstance().csj_needPermissionCheck) {
-            ttAdManager.requestPermissionIfNecessary(getActivity());
-        }
-        AdSlot adSlot;
-
-
         boolean isExpress;
 
         if (sdkSupplier.versionTag == 1) {
@@ -88,7 +81,7 @@ public class CsjSplashAdapter extends EASplashCustomAdapter {
         }
         EALog.simple(TAG + "是否为模板类型：" + isExpress);
 
-
+        AdSlot adSlot;
         //穿山甲后台暂时不支持开屏模板广告，代码先加上相关判断，不影响现有展示。
         if (isExpress) {
             adSlot = new AdSlot.Builder()
@@ -96,16 +89,16 @@ public class CsjSplashAdapter extends EASplashCustomAdapter {
                     .setSupportDeepLink(true)
                     .setExpressViewAcceptedSize(mSplashSetting.getCsjExpressViewWidth(), mSplashSetting.getCsjExpressViewHeight())
                     .setImageAcceptedSize(mSplashSetting.getCsjAcceptedSizeWidth(), mSplashSetting.getCsjAcceptedSizeHeight())
-                    .setSplashButtonType(EasyAdsManger.getInstance().csj_splashButtonType)
-                    .setDownloadType(EasyAdsManger.getInstance().csj_downloadType)
+                    .setSplashButtonType(EasyCsjManger.getInstance().csj_splashButtonType)
+                    .setDownloadType(EasyCsjManger.getInstance().csj_downloadType)
                     .build();
         } else {
             adSlot = new AdSlot.Builder()
                     .setCodeId(sdkSupplier.adspotId)
                     .setSupportDeepLink(true)
                     .setImageAcceptedSize(mSplashSetting.getCsjAcceptedSizeWidth(), mSplashSetting.getCsjAcceptedSizeHeight())
-                    .setSplashButtonType(EasyAdsManger.getInstance().csj_splashButtonType)
-                    .setDownloadType(EasyAdsManger.getInstance().csj_downloadType)
+                    .setSplashButtonType(EasyCsjManger.getInstance().csj_splashButtonType)
+                    .setDownloadType(EasyCsjManger.getInstance().csj_downloadType)
                     .build();
         }
 

@@ -148,7 +148,7 @@ public class CsjInterstitialAdapter extends EAInterstitialCustomAdapter implemen
                 .setCodeId(sdkSupplier.adspotId)
                 .setSupportDeepLink(true)
                 .setExpressViewAcceptedSize(setting.getCsjExpressViewWidth(), setting.getCsjExpressViewHeight())
-                .setDownloadType(EasyAdsManger.getInstance().csj_downloadType)
+                .setDownloadType(EasyCsjManger.getInstance().csj_downloadType)
                 .build();
         if (isNewVersion) {
             ttAdNative.loadFullScreenVideoAd(adSlot, new TTAdNative.FullScreenVideoAdListener() {

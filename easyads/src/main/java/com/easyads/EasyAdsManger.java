@@ -17,7 +17,9 @@ public class EasyAdsManger {
         }
         return instance;
     }
+    //调试状态
     public boolean debug = false;
+    //dev状态代表开发者模式，会有更多日志输出
     public boolean isDev = false;
 
     //标记各平台是否初始化过
@@ -38,12 +40,6 @@ public class EasyAdsManger {
 
     public int splashPlusAutoClose = -1;//开屏v+自动关闭时间，单位毫秒，默认-1不执行强制关闭
     public EALogLevel logLevel = EALogLevel.DEFAULT;
-
-    public int csj_splashButtonType = -1;
-    public int csj_downloadType = -1;
-    public boolean csj_supportMultiProcess = true;
-    public int[] csj_directDownloadNetworkType;
-    public boolean csj_needPermissionCheck = false;
 
     public int getSplashPlusAutoClose() {
         try {

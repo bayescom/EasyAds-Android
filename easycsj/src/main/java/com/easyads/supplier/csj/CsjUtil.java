@@ -36,7 +36,7 @@ public class CsjUtil implements EASplashPlusManager.ZoomCall {
         TTAdManager ttAdManager = null;
         try {
             ttAdManager = TTAdSdk.getAdManager();
-            if (EasyAdsManger.getInstance().csj_needPermissionCheck) {
+            if (EasyCsjManger.getInstance().csj_askPermission) {
                 ttAdManager.requestPermissionIfNecessary(adapter.getActivity());
             }
         } catch (Throwable e) {
@@ -84,8 +84,8 @@ public class CsjUtil implements EASplashPlusManager.ZoomCall {
             }
             EALog.simple("[CsjUtil] 开始初始化SDK");
 
-            boolean supportMP = EasyAdsManger.getInstance().csj_supportMultiProcess;
-            int[] directDownloadNetworkType = EasyAdsManger.getInstance().csj_directDownloadNetworkType;
+            boolean supportMP = EasyCsjManger.getInstance().csj_supportMultiProcess;
+            int[] directDownloadNetworkType = EasyCsjManger.getInstance().csj_directDownloadNetworkType;
 
             //如果未设置下载状态集合，默认4g和wifi下可以下载。
             if (directDownloadNetworkType == null || directDownloadNetworkType.length == 0) {
