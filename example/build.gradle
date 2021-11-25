@@ -43,7 +43,7 @@ repositories {
     dependencies {
         implementation project(path: ':easyads')
 
-        implementation project(path: ':easygdt')
+        implementation project(path: ':easyylh')
         implementation project(path: ':easycsj')
         implementation project(path: ':easybd')
         implementation project(path: ':easyks')

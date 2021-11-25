@@ -20,7 +20,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/adv_gdt_file_path" />
+                android:resource="@xml/ea_ylh_file_path" />
         </provider>
 
     </application>

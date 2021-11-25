@@ -111,10 +111,7 @@ public class KSNativeExpressAdapter extends EANativeExpressCustomAdapter {
 
     @Override
     protected void doShowAD() {
-
-        final View adv = ad.getFeedView(getActivity());
-
-
+        View adv = ad.getFeedView(getActivity());
         addADView(adv);
     }
 }
