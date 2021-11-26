@@ -29,9 +29,9 @@ A: 首先检查广告的策略配置是否正确，如果配置正确，根据SD
 ---
 
 
-Q: 视频类广告为什么无法播放？
+Q: 广告拉取成功了，但是为什么没有展示回调？
 
-A: 检查日志中是否包含类似 `A TextureView or a subclass can only be used with hardware acceleration enabled.` 这样的日志信息，说明APP没有开启硬件加速。建议在应用`AndroidManifest`中的` application`  层级配置`android:hardwareAccelerated="true"` 以后重试即可。也可配置在指定activity上
+A: 首先检查是否正常调用了展示方法。一切都正常的话，有可能下发了视频类广告，但未开启硬件加速，导致视频无法正常播放，可以检查日志中是否包含类似 `A TextureView or a subclass can only be used with hardware acceleration enabled.` 这样的日志信息，说明APP没有开启硬件加速。建议在应用`AndroidManifest`中的` application`  层级配置`android:hardwareAccelerated="true"` 以后重试即可。也可配置在指定activity上
 
 ---
 
@@ -40,4 +40,6 @@ Q: Native、Banner广告展示大小有问题
 A: Native、Banner广告展示内容太大或太小、广告内容被截掉了一部分等，这些一般是代码中的宽高设置有问题导致的。建议首先**阅读广告位的最佳实践说明**，有明确解释广告位大小设置相关建议。 
 
 ---
+
+
 

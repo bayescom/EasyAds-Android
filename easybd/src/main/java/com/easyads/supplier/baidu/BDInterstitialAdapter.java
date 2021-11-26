@@ -59,9 +59,9 @@ public class BDInterstitialAdapter extends EAInterstitialCustomAdapter implement
     protected void doShowAD() {
         if (mInterAd != null) {
             if (videoLayout != null && isAdForVideo) {
-                mInterAd.showAdInParentForVideoApp(getActivity(), videoLayout);
+                mInterAd.showAdInParentForVideoApp(  videoLayout);
             } else {
-                mInterAd.showAd(getActivity());
+                mInterAd.showAd();
             }
         }
     }

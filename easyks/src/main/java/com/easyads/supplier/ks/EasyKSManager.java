@@ -1,6 +1,5 @@
 package com.easyads.supplier.ks;
 
-import com.kwad.sdk.api.KsAdVideoPlayConfig;
 import com.kwad.sdk.api.KsVideoPlayConfig;
 
 /**
@@ -26,11 +25,9 @@ public class EasyKSManager {
 
 
     //激励视频播放配置
-    public KsVideoPlayConfig rewardVideoConfig = null;
+    public KsVideoPlayConfig rewardVideoConfig = defaultConfig;
     //全屏视频播放配置
-    public KsVideoPlayConfig fullScreenVideoConfig = null;
-    //信息流视频播放配置
-    public KsAdVideoPlayConfig nativeExpressConfig = null;
+    public KsVideoPlayConfig fullScreenVideoConfig = defaultConfig;
     //插屏视频播放配置
     public KsVideoPlayConfig interstitialVideoConfig = defaultConfig;
 }

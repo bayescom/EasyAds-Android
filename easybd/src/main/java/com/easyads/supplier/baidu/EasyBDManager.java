@@ -40,7 +40,7 @@ public class EasyBDManager {
     public boolean fullScreenUseSurfaceView = false;
     //激励视频是否使用SurfaceView来渲染
     public boolean rewardUseSurfaceView = false;
-    //下载确认弹框设置，默认永不弹框
+    //激励视频下载确认弹框设置，默认永不弹框
     public int rewardDownloadAppConfirmPolicy = RewardVideoAd.DOWNLOAD_APP_CONFIRM_NEVER;
 
 }

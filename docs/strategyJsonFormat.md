@@ -57,8 +57,8 @@
 
 |字段名	| 字段类型 |含义
 |:--- |:--- |:--- |
-|rules | List&lt;Rule> | **策略规则配置数组**，每一组为单独的执行策略，组内变量主要是SDK顺序排序方式和切分比例。Rule对象含义见下表
-|suppliers | List&lt;Supplier> | **SDK渠道详细信息**，Supplier对象含义见下表
+|suppliers | List&lt;Supplier> | **SDK渠道详细信息**，相当于“广告池”，Supplier对象含义见下表
+|rules | List&lt;Rule> | **策略规则配置数组**，将suppliers“广告池”中的广告以约定的规则进行排序和分发。可分为多组执行广告策略，组内变量主要是SDK顺序排序方式和切分比例。Rule对象含义见下表
 
 
 * Rule 对象包含内容

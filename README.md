@@ -96,32 +96,32 @@ easySplash.show();
 
 点击下方信息，了解各个位置包含的的详细配置参数，和实现建议。
 
-* [开屏广告：EasyAdSplash]()
+* [开屏广告：EasyAdSplash](docs/splash.md)
 
-* [插屏广告：EasyAdInterstitial]()
+* [插屏广告：EasyAdInterstitial](docs/interstital.md)
 
-* [横幅广告：EasyAdBanner]()
+* [横幅广告：EasyAdBanner](docs/banner.md)
 
-* [原生模板、信息流广告：EasyAdNativeExpress]()
+* [原生模板、信息流广告：EasyAdNativeExpress](docs/nativeExpress.md)
 
-* [激励视频广告：EasyAdRewardVideo]()
+* [激励视频广告：EasyAdRewardVideo](docs/reward.md)
 
-* [全屏视频广告：EasyAdFullScreenVideo]()
+* [全屏视频广告：EasyAdFullScreenVideo](docs/full.md)
 
-* [DRAW视频信息流广告：EasyAdDraw]()
+* [DRAW视频信息流广告：EasyAdDraw](docs/draw.md)
 
 
 #### 2.4 SDK渠道配置详细说明
 
-个性化配置，满足不同需求场景。
+个性化配置参数，满足不同需求场景。
 
-* [全局核心配置类：EasyAds]()
+* [全局核心配置类：EasyAds](docs/easyAds.md)
 
-* [百度渠道配置类：EasyBDManager]()
+* [百度渠道配置类：EasyBDManager](docs/easyBDManger.md)
 
-* [穿山甲渠道配置类：EasyCsjManger]()
+* [穿山甲渠道配置类：EasyCsjManger](docs/easyCsjManger.md)
 
-* [快手渠道配置类：EasyKSManger]()
+* [快手渠道配置类：EasyKSManger](docs/easyKSManger.md)
 
 
 #### 2.5 自定义支持更多广告SDK渠道
@@ -150,13 +150,14 @@ easySplash.show();
 
 为保证广告正常执行，有以下注意事项：
 
-1.在`doLoadAD()`方法内执行广告请求方法时，一定要保证广告SDK已经执行过初始化方法了，媒体应用id，可以通过基类的`getAppID()`方法获取到。
-2.一定要在广告成功、曝光、点击、失败时，调用基类对应`handleXXX`方法
+* 1.在`doLoadAD()`方法内执行广告请求方法时，一定要保证广告SDK已经执行过初始化方法了，如需获取渠道的appId，可以通过基类的`getAppID()`方法获取到。
+
+* 2.一定要在广告成功、曝光、点击、失败时，调用基类对应`handleXXX`方法
 
 
-第二步：将`ABCAdapter`通过EasyAds广告`addCustomSupplier(String sdkTag, EABaseSupplierAdapter adapter) `方法添加进去。注意`sdkTag`需要和json策略中的`supplier-tag`一致。
+第二步：将`ABCAdapter`通过`EasyAdXXX`广告的`addCustomSupplier(String sdkTag, EABaseSupplierAdapter adapter) `方法添加进去。注意`sdkTag`需要和json策略中的`supplier`内`tag`一致。
 
-第三步：修改策略json，添加自定义的渠道的`supplier`和 `rules`信息
+第三步：修改策略json，添加该自定义的渠道的`supplier`和 `rules`信息
 
 
 

@@ -17,7 +17,7 @@ public class EasyAds {
     }
 
 
-    //设置开屏v+ 小窗口自动关闭时间，不设置使用默认各个渠道默认展示逻辑
+    //设置开屏v+ 小窗口自动关闭时间，单位毫秒，不设置使用默认各个渠道默认展示逻辑
     public static void setSplashPlusAutoClose(int time) {
         EasyAdsManger.getInstance().splashPlusAutoClose = time;
     }
