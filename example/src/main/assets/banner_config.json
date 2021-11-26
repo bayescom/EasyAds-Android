@@ -19,20 +19,20 @@
   "suppliers": [
     {
       "tag": "csj",
-      "adspotid": "947107684",
-      "appid": "5051624",
+      "adspotId": "947107684",
+      "appId": "5051624",
       "index": 1
     },
     {
       "tag": "ylh",
-      "adspotid": "4080052898050840",
-      "appid": "1101152570",
+      "adspotId": "4080052898050840",
+      "appId": "1101152570",
       "index": 2
     },
     {
       "tag": "bd",
-      "adspotid": "2015351",
-      "appid": "e866cfb0",
+      "adspotId": "2015351",
+      "appId": "e866cfb0",
       "index": 3
     }
   ]

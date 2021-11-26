@@ -106,6 +106,7 @@ public class HuaWeiSplashAdapter extends EASplashCustomAdapter {
         SplashAdDisplayListener adDisplayListener = new SplashAdDisplayListener() {
             @Override
             public void onAdShowed() {
+                //一定要调用此方法，否则对应回调方法无法执行
                 handleExposure();
 
                 try {
@@ -122,6 +123,7 @@ public class HuaWeiSplashAdapter extends EASplashCustomAdapter {
 
             @Override
             public void onAdClick() {
+                //一定要调用此方法，否则对应回调方法无法执行
                 handleClick();
             }
         };
@@ -131,6 +133,7 @@ public class HuaWeiSplashAdapter extends EASplashCustomAdapter {
             public void onAdFailedToLoad(int errorCode) {
                 super.onAdFailedToLoad(errorCode);
                 EALog.e(TAG + "广告失败：errorCode = " + errorCode);
+                //注意：一定要在广告失败试，执行此方法，否则无法加载后续渠道请求，导致此次请求无广告展示
                 handleFailed(errorCode + "", "");
             }
 
@@ -138,7 +141,7 @@ public class HuaWeiSplashAdapter extends EASplashCustomAdapter {
             public void onAdLoaded() {
                 super.onAdLoaded();
                 EALog.high(TAG + "onAdLoaded ");
-
+                //一定要调用此方法，否则对应回调方法无法执行
                 handleSucceed();
             }
 

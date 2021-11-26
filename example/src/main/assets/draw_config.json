@@ -18,15 +18,15 @@
   "suppliers": [
     {
       "tag": "csj",
-      "adspotid": "946782694",
-      "appid": "5051624",
+      "adspotId": "946782694",
+      "appId": "5051624",
       "index": 1
     },
 
     {
       "tag": "ks",
-      "adspotid": "4000000020",
-      "appid": "90009",
+      "adspotId": "4000000020",
+      "appId": "90009",
       "index": 2
     }
   ]

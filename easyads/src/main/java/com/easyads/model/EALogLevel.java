@@ -2,7 +2,7 @@ package com.easyads.model;
 
 public enum EALogLevel {
     /**
-     * 可以自定义级别
+     * 可以自定义级别，level值越大，打印的信息越多。
      */
     CUSTOM(-1),
     /**

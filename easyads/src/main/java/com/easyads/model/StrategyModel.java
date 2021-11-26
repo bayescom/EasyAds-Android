@@ -41,8 +41,8 @@ public class StrategyModel implements Serializable {
                 SdkSupplier supplier = new SdkSupplier();
                 JSONObject impObject = suppliers.getJSONObject(i);
                 supplier.tag = impObject.optString("tag");
-                supplier.adspotId = impObject.optString("adspotid");
-                supplier.appId = impObject.optString("appid");
+                supplier.adspotId = impObject.optString("adspotId");
+                supplier.appId = impObject.optString("appId");
                 supplier.index = impObject.optInt("index");
                 strategyModel.supplierMap.put(supplier.index, supplier);
             }

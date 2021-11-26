@@ -50,6 +50,7 @@ public class XiaoMiSplashAdapter extends EASplashCustomAdapter {
         mSplashAd.loadAndShow(adContainer, getPosID(), new SplashAd.SplashAdListener() {
             @Override
             public void onAdShow() {
+                //一定要调用此方法，否则对应回调方法无法执行
                 handleExposure();
 
                 new Handler().postDelayed(new Runnable() {
@@ -62,6 +63,7 @@ public class XiaoMiSplashAdapter extends EASplashCustomAdapter {
 
             @Override
             public void onAdClick() {
+                //一定要调用此方法，否则对应回调方法无法执行
                 handleClick();
             }
 
@@ -79,17 +81,19 @@ public class XiaoMiSplashAdapter extends EASplashCustomAdapter {
 
             @Override
             public void onAdLoadFailed(int i, String s) {
+                //注意：一定要在广告失败试，执行此方法，否则无法加载后续渠道请求，导致此次请求无广告展示
                 handleFailed(i + "", s);
             }
 
             @Override
             public void onAdLoaded() {
+                //一定要调用此方法，否则对应回调方法无法执行
                 handleSucceed();
             }
 
             @Override
             public void onAdRenderFailed() {
-                //渲染失败也要执行失败回调处理
+                //注意：一定要在广告失败试，执行此方法，否则无法加载后续渠道请求，导致此次请求无广告展示
                 handleFailed(EasyAdError.ERROR_RENDER_FAILED, "");
             }
         });

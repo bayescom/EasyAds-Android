@@ -22,39 +22,38 @@
   "suppliers": [
     {
       "tag": "csj",
-      "adspotid": "887477661",
-      "appid": "5051624",
+      "adspotId": "887477661",
+      "appId": "5051624",
       "index": 1
     },
     {
       "tag": "ylh",
-      "adspotid": "2001447730515391",
-      "appid": "1101152570",
+      "adspotId": "2001447730515391",
+      "appId": "1101152570",
       "index": 2
     },
     {
       "tag": "ks",
-      "adspotid": "4000000042",
-      "appid": "90009",
+      "adspotId": "4000000042",
+      "appId": "90009",
       "index": 3
     },
     {
       "tag": "bd",
-      "adspotid": "2058622",
-      "appid": "e866cfb0",
+      "adspotId": "2058622",
+      "appId": "e866cfb0",
       "index": 4
     },
     {
       "tag": "hw",
-      "adspotid2": "testq6zq98hecj",
-      "adspotid": "testd7c5cewoj6",
-      "appid": "",
+      "adspotId": "testd7c5cewoj6",
+      "appId": "",
       "index": 5
     },
     {
       "tag": "xm",
-      "adspotid": "94f4805a2d50ba6e853340f9035fda18",
-      "appid": "",
+      "adspotId": "94f4805a2d50ba6e853340f9035fda18",
+      "appId": "",
       "index": 6
     }
   ]
