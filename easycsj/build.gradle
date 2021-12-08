@@ -7,7 +7,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.bayescom'
 
 def pomName = "easyads-csj"
-def VersionCode = 4022
+def VersionCode = 4105
 def VersionName = "${rootProject.ext.EasyAds_version}_" + VersionCode
 
 def outputName = pomName + "_" + VersionName + ".aar"

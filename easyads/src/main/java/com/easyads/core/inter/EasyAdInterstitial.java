@@ -50,6 +50,10 @@ public class EasyAdInterstitial extends EasyAdBaseAdspot implements EAInterstiti
         this.csjExpressViewHeight = expressViewHeight;
     }
 
+    public void setCsjNew(boolean csjNew) {
+        isCsjNew = csjNew;
+    }
+
     public void setYlhMediaListener(UnifiedInterstitialMediaListener listener) {
         ylhlistener = listener;
     }
@@ -73,7 +77,5 @@ public class EasyAdInterstitial extends EasyAdBaseAdspot implements EAInterstiti
         return isCsjNew;
     }
 
-    public void setCsjNew(boolean csjNew) {
-        isCsjNew = csjNew;
-    }
+
 }

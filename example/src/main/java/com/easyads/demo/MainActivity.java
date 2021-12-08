@@ -45,7 +45,7 @@ public class MainActivity extends BaseActivity {
         });
 
         TextView title = findViewById(R.id.tv_title);
-        title.setText("EasyAds Demo");
+        title.setText("EasyAds-简单聚合 急速变现");
 
 
         boolean hasPri = getSharedPreferences(Constant.SP_NAME, Context.MODE_PRIVATE).getBoolean(Constant.SP_AGREE_PRIVACY, false);

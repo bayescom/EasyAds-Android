@@ -68,10 +68,6 @@ public class EasyAdDraw extends EasyAdBaseAdspot implements EADrawSetting {
         return adContainer;
     }
 
-    public void setCsjExpressSize(int width, int height) {
-        this.csjExpressWidth = width;
-        this.csjExpressHeight = height;
-    }
 
     @Override
     public int getCsjExpressHeight() {

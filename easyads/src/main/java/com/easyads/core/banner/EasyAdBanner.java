@@ -7,6 +7,7 @@ import com.easyads.EasyAdsConstant;
 import com.easyads.core.EasyAdBaseAdspot;
 import com.easyads.model.EasyAdType;
 import com.easyads.model.SdkSupplier;
+import com.easyads.utils.ScreenUtil;
 
 
 public class EasyAdBanner extends EasyAdBaseAdspot implements EABannerSetting {
@@ -15,7 +16,7 @@ public class EasyAdBanner extends EasyAdBaseAdspot implements EABannerSetting {
     private EABannerListener listener;//广告事件回调
 
     public int csjExpressViewAcceptedWidth = 360; //穿山甲模板尺寸宽度，单位dp，一定要和穿山甲后台配置的尺寸匹配
-    public int csjExpressViewAcceptedHeight = 56;
+    public int csjExpressViewAcceptedHeight = 0;
 
     /**
      * 构造方法
@@ -30,6 +31,9 @@ public class EasyAdBanner extends EasyAdBaseAdspot implements EABannerSetting {
             adType = EasyAdType.BANNER;//赋值广告类型
             this.adContainer = adContainer;
             this.listener = listener;
+
+            //默认设置为全屏宽度
+            csjExpressViewAcceptedWidth = ScreenUtil.px2dip(activity, ScreenUtil.getScreenWidth(activity));
         } catch (Throwable e) {
             e.printStackTrace();
         }

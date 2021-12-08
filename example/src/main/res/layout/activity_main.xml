@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="8dp"
+    android:padding="5dp"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -34,31 +34,41 @@
             android:id="@+id/banner_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:onClick="onBanner"
             android:text="横幅Banner" />
 
 
-        <Button
-            android:id="@+id/splash_button"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="onSplash"
-            android:text="activity展示开屏" />
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/splash_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onSplash"
+                android:text="开屏(activity)" />
 
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onSplashDialog"
-            android:text="dialog展示开屏" />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onSplashDialog"
+
+                android:text="开屏(dialog)" />
+        </LinearLayout>
+
 
         <Button
             android:id="@+id/interstitial_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onInterstitial"
-            android:text="插屏（弹窗广告）" />
+            android:text="插屏（弹窗）广告" />
 
 
         <Button
@@ -66,7 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onNativeExpress"
-            android:text="原生模板NativeExpress" />
+            android:text="原生模板广告" />
 
         <Button
             android:id="@+id/native_express_recycler_view_button"
@@ -74,6 +84,21 @@
             android:layout_height="wrap_content"
             android:onClick="onNativeExpressRecyclerView"
             android:text="原生模板信息流RecyclerView" />
+
+
+        <Button
+            android:id="@+id/rewardvideo_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRewardVideo"
+            android:text="激励视频广告" />
+
+        <Button
+            android:id="@+id/fullvideo_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onFullVideo"
+            android:text="全屏视频广告" />
 
         <Button
             android:id="@+id/btn_draw"
@@ -83,25 +108,10 @@
             android:text="draw视频信息流" />
 
         <Button
-            android:id="@+id/rewardvideo_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onRewardVideo"
-            android:text="激励视频reward" />
-
-        <Button
-            android:id="@+id/fullvideo_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onFullVideo"
-            android:text="全屏视频fullscreen" />
-
-
-        <Button
             android:id="@+id/custom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:onClick="customChannel"
             android:text="自定义支持其他广告SDK" />
 
@@ -115,7 +125,7 @@
             android:id="@+id/tv_version"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:text="" />
     </LinearLayout>
 

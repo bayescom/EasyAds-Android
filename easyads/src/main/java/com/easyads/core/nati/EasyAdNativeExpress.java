@@ -98,13 +98,6 @@ public class EasyAdNativeExpress extends EasyAdBaseAdspot implements EANativeExp
         }
     }
 
-    public EasyAdNativeExpress setExpressViewAcceptedSize(int width, int height) {
-        this.expressViewWidth = width;
-        this.expressViewHeight = height;
-        return this;
-    }
-
-
     // 设置视频类广告是否默认静音，默认true
     public EasyAdNativeExpress setVideoMute(boolean mute) {
         this.videoMute = mute;

@@ -21,6 +21,7 @@ public class EasyKSManager {
 
     private KsVideoPlayConfig defaultConfig = new KsVideoPlayConfig.Builder()
             .videoSoundEnable(true)
+            .showLandscape(false)
             .build();
 
 

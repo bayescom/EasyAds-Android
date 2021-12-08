@@ -25,7 +25,7 @@ public interface EARewardVideoSetting extends BaseAdapterEvent {
 
     String getCsjUserId();
 
-    int getOrientation();
+    int getCsjOrientation();
 
     String getCsjMediaExtra();
 

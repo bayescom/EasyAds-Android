@@ -14,7 +14,9 @@ public class BannerActivity extends BaseActivity {
         setContentView(R.layout.activity_banner);
         rl = findViewById(R.id.banner_layout);
 
+        //初始化广告处理封装类
         ad = new EasyADController(this);
+        //加载banner
         ad.loadBanner("banner_config.json", rl);
     }
 

@@ -32,7 +32,7 @@ public class SplashActivity extends BaseActivity {
 
         logo = findViewById(R.id.ll_logo);
 
-        //初始化
+        //初始化广告处理封装类
         EasyADController ad = new EasyADController(this);
         String jsonName = "splash_config.json";
 
@@ -43,7 +43,7 @@ public class SplashActivity extends BaseActivity {
             jsonName = "splash_cus_config.json";
         }
         /**
-         * 开屏推荐使用加载并展示开屏广告方式，所有的广告均支持请求和展示分离，如有必要，可分别调用加载广告和展示广告，可参考"插屏广告"中的处理示例。
+         * 加载广告
          */
         ad.loadSplash(jsonName, adContainer, logo, true, new EasyADController.SplashCallBack() {
             @Override

@@ -2,7 +2,6 @@ package com.easyads.supplier.csj;
 
 import android.app.Activity;
 
-import com.easyads.EasyAdsManger;
 import com.easyads.core.reward.EARewardServerCallBackInf;
 import com.easyads.core.reward.EARewardVideoSetting;
 import com.easyads.custom.EARewardCustomAdapter;
@@ -97,7 +96,7 @@ public class CsjRewardVideoAdapter extends EARewardCustomAdapter implements TTAd
                 //必传参数，表来标识应用侧唯一用户；若非服务器回调模式或不需sdk透传
                 //可设置为空字符串
                 .setUserID(setting.getCsjUserId())
-                .setOrientation(setting.getOrientation())  //设置期望视频播放的方向，为TTAdConstant.HORIZONTAL或TTAdConstant.VERTICAL
+                .setOrientation(setting.getCsjOrientation())  //设置期望视频播放的方向，为TTAdConstant.HORIZONTAL或TTAdConstant.VERTICAL
                 .setMediaExtra(setting.getCsjMediaExtra()) //用户透传的信息，可不传
                 .setDownloadType(EasyCsjManger.getInstance().csj_downloadType)
                 .build();

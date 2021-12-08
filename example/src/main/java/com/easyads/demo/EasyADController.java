@@ -2,15 +2,14 @@ package com.easyads.demo;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.easyads.EasyAdsConstant;
 import com.easyads.core.EasyAdBaseAdspot;
-import com.easyads.core.EABaseSupplierAdapter;
 import com.easyads.core.banner.EasyAdBanner;
 import com.easyads.core.banner.EABannerListener;
 import com.easyads.core.draw.EasyAdDraw;
@@ -31,9 +30,10 @@ import com.easyads.utils.EALog;
 import com.easyads.utils.ScreenUtil;
 import com.easyads.demo.custom.HuaWeiSplashAdapter;
 import com.easyads.demo.custom.XiaoMiSplashAdapter;
-import com.easyads.demo.utils.FileUtil;
 import com.hjq.toast.ToastUtils;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.lang.ref.SoftReference;
 
 /**
@@ -60,20 +60,7 @@ public class EasyADController {
 
 
     /**
-     * 添加自定义渠道，注意一定要在广告初始化以后再调用！
-     *
-     * @param sdkID   SDK渠道id。具体值需联系运营获取对应接入渠道的id。
-     * @param adapter 继承与基类adapter的自定义adapter
-     */
-    public void addCustomAdapter(String sdkID, EABaseSupplierAdapter adapter) {
-        if (baseAD != null) {
-            baseAD.addCustomSupplier(sdkID, adapter);
-        }
-    }
-
-
-    /**
-     * 加载开屏广告
+     * 加载开屏广告，开屏推荐使用加载并展示开屏广告方式，所有的广告均支持请求和展示分离，如有必要，可分别调用加载广告和展示广告，可参考"插屏广告"中的处理示例。
      *
      * @param adContainer    广告承载布局，不可为空
      * @param logoContainer  底部logo布局，可以为空
@@ -81,7 +68,6 @@ public class EasyADController {
      * @param callBack       跳转回调，在回调中进行跳转主页或其他操作
      */
     public void loadSplash(String jsonFileName, final ViewGroup adContainer, final ViewGroup logoContainer, boolean singleActivity, final SplashCallBack callBack) {
-        //开屏初始化；adspotId代表广告位id，adContainer为广告容器，skipView不需要自定义可以为null
         //必须：设置开屏核心回调事件的监听器。
         EASplashListener listener = new EASplashListener() {
 
@@ -130,17 +116,17 @@ public class EasyADController {
         };
         EasyAdSplash easySplash = new EasyAdSplash(mActivity, adContainer, listener);
         baseAD = easySplash;
-        //注意：如果开屏页是fragment或者dialog实现，这里需要置为false。默认为false，代表开屏和首页为两个不同的activity
+        //注意：如果开屏页是fragment或者dialog实现，这里需要置为false。默认为true，代表开屏和首页为两个不同的activity
         easySplash.setShowInSingleActivity(singleActivity);
         if (cusXiaoMi) {
-            //注意：此处自定义渠道的tag，一定要和。
+            //注意：此处自定义渠道的tag，一定要和setData()中配置的tag一致。
             easySplash.addCustomSupplier("xm", new XiaoMiSplashAdapter(new SoftReference<>(mActivity), easySplash));
         }
         if (cusHuaWei) {
             easySplash.addCustomSupplier("hw", new HuaWeiSplashAdapter(new SoftReference<>(mActivity), easySplash));
         }
         //必须：设置策略信息
-        easySplash.setData(FileUtil.getJson(mActivity, jsonFileName));
+        easySplash.setData(getJson(mActivity, jsonFileName));
         //必须：请求并展示广告
         easySplash.loadAndShow();
         logAndToast(mActivity, "广告请求中");
@@ -191,12 +177,13 @@ public class EasyADController {
         };
         EasyAdBanner easyAdBanner = new EasyAdBanner(mActivity, adContainer, listener);
         baseAD = easyAdBanner;
-        //如果集成穿山甲，这里必须配置，具体尺寸要和穿山甲后台中的"代码位尺寸"宽高比例一致，值单位为dp，这里示例使用的广告位宽高比为640：100
+        //如果集成穿山甲，这里必须配置，建议尺寸要和穿山甲后台中的"代码位尺寸"宽高比例一致，值单位为dp，这里示例使用的广告位宽高比为640：100。
         int adWidth = ScreenUtil.px2dip(mActivity, ScreenUtil.getScreenWidth(mActivity));
         int adHeight = (int) (((double) adWidth / (double) 640) * 100);
+        //如果高度传入0代表自适应高度
         easyAdBanner.setCsjExpressSize(adWidth, adHeight);
         //必须：设置策略信息
-        easyAdBanner.setData(FileUtil.getJson(mActivity, jsonFileName));
+        easyAdBanner.setData(getJson(mActivity, jsonFileName));
         //必须：请求并展示广告
         easyAdBanner.loadAndShow();
         logAndToast(mActivity, "广告请求中");
@@ -247,7 +234,7 @@ public class EasyADController {
         //注意：穿山甲默认为"新插屏广告"，如果要使用旧版请打开这条设置
 //        easyInterstitial.setCsjNew(false);
         //必须：设置策略信息
-        easyInterstitial.setData(FileUtil.getJson(mActivity, jsonFileName));
+        easyInterstitial.setData(getJson(mActivity, jsonFileName));
         return easyInterstitial;
     }
 
@@ -315,7 +302,7 @@ public class EasyADController {
         EasyAdRewardVideo easyRewardVideo = new EasyAdRewardVideo(mActivity, listener);
         baseAD = easyRewardVideo;
         //必须：设置策略信息
-        easyRewardVideo.setData(FileUtil.getJson(mActivity, jsonFileName));
+        easyRewardVideo.setData(getJson(mActivity, jsonFileName));
         return easyRewardVideo;
     }
 
@@ -374,7 +361,7 @@ public class EasyADController {
         EasyAdFullScreenVideo easyFullScreenVideo = new EasyAdFullScreenVideo(mActivity, listener);
         baseAD = easyFullScreenVideo;
         //必须：设置策略信息
-        easyFullScreenVideo.setData(FileUtil.getJson(mActivity, jsonFileName));
+        easyFullScreenVideo.setData(getJson(mActivity, jsonFileName));
 
         return easyFullScreenVideo;
     }
@@ -456,7 +443,7 @@ public class EasyADController {
         baseAD = easyNativeExpress;
         easyNativeExpress.setAdContainer(adContainer);
         //必须：设置策略信息
-        easyNativeExpress.setData(FileUtil.getJson(mActivity, jsonFileName));
+        easyNativeExpress.setData(getJson(mActivity, jsonFileName));
         //必须：请求并展示广告
         easyNativeExpress.loadAndShow();
         logAndToast(mActivity, "广告请求中");
@@ -502,7 +489,7 @@ public class EasyADController {
         baseAD = easyAdDraw;
         easyAdDraw.setAdContainer(adContainer);
         //必须：设置策略信息
-        easyAdDraw.setData(FileUtil.getJson(mActivity, jsonFileName));
+        easyAdDraw.setData(getJson(mActivity, jsonFileName));
         //必须：请求并展示广告
         easyAdDraw.loadAndShow();
         logAndToast(mActivity, "广告请求中");
@@ -528,5 +515,23 @@ public class EasyADController {
     public static void logAndToast(Context context, String msg) {
         Log.d("[DemoUtil][logAndToast]", msg);
         ToastUtils.debugShow(msg);
+    }
+
+    /**
+     * 获取存放在assets下面的广告json文件内容，建议APP端有条件的话，通过后端下发json配置内容
+     */
+    public static String getJson(Context context, String fileName) {
+        StringBuilder stringBuilder = new StringBuilder();
+        try {
+            AssetManager assetManager = context.getAssets();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(assetManager.open(fileName)));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                stringBuilder.append(line);
+            }
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+        return stringBuilder.toString();
     }
 }

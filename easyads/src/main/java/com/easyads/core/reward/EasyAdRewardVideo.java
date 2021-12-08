@@ -10,13 +10,13 @@ import com.qq.e.ads.rewardvideo.ServerSideVerificationOptions;
 
 public class EasyAdRewardVideo extends EasyAdBaseAdspot implements EARewardVideoSetting {
     private EARewardVideoListener listener;
-    private int orientation = ORIENTATION_VERTICAL; //屏幕方向，仅穿山甲支持
+    private int csjOrientation = ORIENTATION_VERTICAL; //屏幕方向，仅穿山甲支持
     private String csjRewardName = ""; //穿山甲奖励名称
     private String csjUserId = "";//穿山甲用户id
     private int csjRewardAmount = 1;//穿山甲奖励数量
     private String csjMediaExtra = "";//穿山甲媒体补充信息
 
-    private boolean isYlhVO = false; //优量汇是否开始声音
+    private boolean isYlhVO = false; //优量汇是否开启声音
     private ServerSideVerificationOptions ylhSSVO = null;  //优量汇服务端校验配置信息
 
     public static final int ORIENTATION_VERTICAL = 1;
@@ -101,8 +101,8 @@ public class EasyAdRewardVideo extends EasyAdBaseAdspot implements EARewardVideo
 
     }
 
-    public void setOrientation(int orientation) {
-        this.orientation = orientation;
+    public void setCsjOrientation(int csjOrientation) {
+        this.csjOrientation = csjOrientation;
 
     }
 
@@ -110,13 +110,13 @@ public class EasyAdRewardVideo extends EasyAdBaseAdspot implements EARewardVideo
         this.csjMediaExtra = mediaExtra;
     }
 
-    public String getCsjMediaExtra() {
-        return csjMediaExtra;
-    }
-
 
     public void setYlhVolumeOn(boolean vo) {
         isYlhVO = vo;
+    }
+
+    public void setYlhSSVO(ServerSideVerificationOptions options){
+        ylhSSVO = options;
     }
 
     @Override
@@ -124,13 +124,17 @@ public class EasyAdRewardVideo extends EasyAdBaseAdspot implements EARewardVideo
         return isYlhVO;
     }
 
+    public String getCsjMediaExtra() {
+        return csjMediaExtra;
+    }
+
     @Override
     public ServerSideVerificationOptions getYlhSSVO() {
         return ylhSSVO;
     }
 
-    public int getOrientation() {
-        return orientation;
+    public int getCsjOrientation() {
+        return csjOrientation;
     }
 
     public int getCsjRewardAmount() {

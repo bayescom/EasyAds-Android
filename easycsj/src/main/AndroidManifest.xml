@@ -2,17 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.easyads.supplier.csj">
 
-    <uses-sdk tools:overrideLibrary="com.bytedance.sdk.openadsdk"/>
-
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.GET_TASKS" />
-    <!--必要权限，解决安全风险漏洞，发送和注册广播事件需要调用带有传递权限的接口-->
-    <permission
-        android:name="${applicationId}.openadsdk.permission.TT_PANGOLIN"
-        android:protectionLevel="signature" />
-
-    <uses-permission android:name="${applicationId}.openadsdk.permission.TT_PANGOLIN" />
-
     <application
         android:allowBackup="true"
         android:supportsRtl="true"
@@ -29,7 +18,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/adv_csj_file_paths" />
+                android:resource="@xml/ea_csj_file_paths" />
         </provider>
         <provider
             android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider"
