@@ -1,4 +1,4 @@
-# 策略配置说明
+# 策略Json配置说明
 
 每个聚合广告位均可通过`setData(String strategyJson) `方法设置策略信息，其中 `strategyJson`参数为SDK的策略配置信息，其json结构示例如下：
 
