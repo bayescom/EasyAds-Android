@@ -21,7 +21,7 @@ EasyAds是一个聚合管理变现广告SDK的开源SDK，目前EasyAds支持以
 
 [SDK错误码](https://github.com/bayescom/EasyAds-Android/wiki/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8#31-%E9%94%99%E8%AF%AF%E7%A0%81)
 
-技术交流QQ群:913237929
+技术交流QQ群:913237929 
 
 ### 更多
 
