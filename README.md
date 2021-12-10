@@ -11,4 +11,20 @@ EasyAds是一个聚合管理变现广告SDK的开源SDK，目前EasyAds支持以
 
 补充说明：不在支持列表的广告SDK平台，您也可以通过使用**自定义SDK渠道**，来统一管理。
 
-您可以浏览`example`中的示例，或者翻阅[接入手册](https://github.com/bayescom/EasyAds-Android/wiki/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8)了解如何上手。
+[开始使用](https://github.com/bayescom/EasyAds-Android/wiki/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8)
+
+参考`example`示例工程，可以让您快速了解体验EasyAds。
+
+### 支持
+
+[常见问题](https://github.com/bayescom/EasyAds-Android/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98FAQ)
+
+[SDK错误码](https://github.com/bayescom/EasyAds-Android/wiki/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8#31-%E9%94%99%E8%AF%AF%E7%A0%81)
+
+技术交流QQ群:913237929
+
+### 更多
+
+如果用的还算舒心,请给个star, 您的star是我们前进的动力！
+
+如果你的App日活达到数十万甚至上百万,并且想要拥有更完美,更高效,更安全,的保姆级变现体验,请[联系我们](http://www.bayescom.com/)
