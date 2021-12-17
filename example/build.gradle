@@ -41,6 +41,8 @@ repositories {
         dirs 'libs'
     }
     dependencies {
+//        implementation 'com.github.bayescom:EasyAds-Android:1.0'
+//
         implementation project(path: ':easyads')
 
         implementation project(path: ':easyylh')
