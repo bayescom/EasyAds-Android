@@ -157,7 +157,7 @@ easySplash.show();
 ### 3.2 自定义支持更多广告SDK渠道
 [自定义SDK渠道]()
 
-## 4. 常见问题 & SDK错误码
+## 4. SDK错误码 & 常见问题 
 
 [常见问题](https://github.com/bayescom/EasyAds-Android/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98FAQ)
 
