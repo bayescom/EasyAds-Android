@@ -1,13 +1,13 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-def version = '1.0.1'
+def version = '1.0'
 
 ext {
     //统一版本号，同时使用在渠道版本号信息中
     EasyAds_version = version
 
-    //是否进行SDK版本发布，此开关影响了build.gradle中的aar引用配置
-    releaseSDK = false
+    //是否进行SDK版本发布，true会通过embed 绑定广告aar到渠道处理包中
+    releaseSDK = true
 }
 
 
