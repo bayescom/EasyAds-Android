@@ -12,8 +12,7 @@
 
 ## 2. 快速接入
 
-下面介绍EasyAds的快速接入方法，开发中也可以参考[Example](https://github.com/bayescom/EasyAds-Android/tree/main/example)
-下的示例工程，快速了解。
+下面介绍EasyAds的快速接入方法，开发中也可以参考[Example](https://github.com/bayescom/EasyAds-Android/tree/main/example)下的示例工程，快速了解。
 
 ### 2.1 引入SDK
 
