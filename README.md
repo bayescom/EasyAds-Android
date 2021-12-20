@@ -133,7 +133,7 @@ easySplash.loadOnly();
 easySplash.show();
 ```
 
-#### 2.3.4 各广告位详细说明
+#### 2.3.4 各广告位集成实现
 
 * [开屏广告：EasyAdSplash](https://github.com/bayescom/EasyAds-Android/wiki/%E5%BC%80%E5%B1%8F%E5%B9%BF%E5%91%8A)
 
