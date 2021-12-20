@@ -7,7 +7,7 @@ ext {
     EasyAds_version = version
 
     //是否进行SDK版本发布，true会通过embed 绑定广告aar到渠道处理包中
-    releaseSDK = false
+    releaseSDK = true
 }
 
 
