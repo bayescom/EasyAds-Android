@@ -153,13 +153,16 @@ easySplash.show();
 ## 3. 进阶设置
 
 ### 3.1 SDK全局配置详细说明
-
+[SDK全局配置]()
 
 ### 3.2 自定义支持更多广告SDK渠道
-
+[自定义SDK渠道]()
 
 ## 4. 常见问题 & SDK错误码
 
+[常见问题](https://github.com/bayescom/EasyAds-Android/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98FAQ)
+
+[SDK错误码](https://github.com/bayescom/EasyAds-Android/wiki/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8#31-%E9%94%99%E8%AF%AF%E7%A0%81)
 
 ## 技术支持
 
