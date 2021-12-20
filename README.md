@@ -51,6 +51,8 @@ allprojects {
 
 策略JSON的配置说明详细见：[SDK策略配置JSON说明](https://github.com/bayescom/EasyAds-Android/wiki/%E7%AD%96%E7%95%A5Json%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E)
 
+不同广告位的JSON策略配置示例见：[不同广告位JSON配置示例](https://github.com/bayescom/EasyAds-Android/tree/luyao_updaet/example/src/main/assets)
+
 ```json
 {
   "rules": [
@@ -88,20 +90,15 @@ allprojects {
 }
 ```
 
-<font color=red>**注：**</font>
-
-<font color=red>我是红色</font>
+**注：**
 为了方便开发者配置流量分发策略，我们也提供了在线可视化的便捷工具[EasyTools](http://easyads.bayescom.cn/)，方便生成广告位的策略配置JSON。
-
 
 
 ### 2.3 获取广告
 
-以下步骤，为获取广告的必要步骤，**适用于所有广告位**。
+以下步骤，为获取广告的必要步骤，**适用于所有广告位**。 不同广告位置的不同实现，可参考[Example示例](https://github.com/bayescom/EasyAds-Android/tree/main/example/src/main/java/com/easyads/demo)；
 
-不同广告位置的不同实现，请参考example示例或者下方2.3部分说明。
-
-####  2.2.1 初始化广告对象
+####  2.3.1 初始化广告对象
 
 初始化广告对象`EasyAdXXX`，以开屏为例
 
@@ -109,15 +106,15 @@ allprojects {
 EasyAdSplash easySplash = new EasyAdSplash(mActivity, adContainer, listener);
 ```
 
-####  2.2.2 初始化广告对象
+####  2.3.2 初始化广告对象
 
-调用共有方法`setData(String strategyJson)`，给当前位置广告**赋予执行策略**，详细配置说明参考下方`2.2策略配置说明`。
+调用共有方法`setData(String strategyJson)`，给当前位置广告**赋予执行策略**，即2.2步骤中生成的SDK分发策略配置。
 
 ```
 easySplash.setData(FileUtil.getJson(mActivity, "splash_config.json"));
 ```
 
-* 步骤3.调用广告获取方法:
+#### 2.3.3 调用获取广告
 
 方式一：**请求并展示广告**。
 
@@ -131,17 +128,15 @@ easySplash.loadAndShow();
 easySplash.loadOnly();
 ```
 
-待广告成功拉取后，或者在合适的时机，由APP自己决定调用展示广告方法：(**注意：广告会存在有效期，过久未调用展示，会导致广告失效**)
+待广告成功拉取后，开发者可根据业务需求在合适的时机，决定调用展示广告方法。(**注意：广告会存在有效期，过久未调用展示，会导致广告失效**)
 
 ```
 easySplash.show();
 ```
 
-#### 2.3 各广告位详细说明
+#### 2.3.4 各广告位详细说明
 
-点击下方信息，了解各个位置包含的的详细配置参数，和实现建议。
-
-* [开屏广告：EasyAdSplash](开屏广告)
+* [开屏广告：EasyAdSplash](https://github.com/bayescom/EasyAds-Android/wiki/%E5%BC%80%E5%B1%8F%E5%B9%BF%E5%91%8A)
 
 * [插屏广告：EasyAdInterstitial](插屏广告)
 
@@ -154,6 +149,16 @@ easySplash.show();
 * [全屏视频广告：EasyAdFullScreenVideo](全屏视频广告)
 
 * [DRAW视频信息流广告：EasyAdDraw](DRAW视频信息流广告)
+
+## 3. 进阶设置
+
+### 3.1 SDK全局配置详细说明
+
+
+### 3.2 自定义支持更多广告SDK渠道
+
+
+## 4. 常见问题 & SDK错误码
 
 
 ## 技术支持
