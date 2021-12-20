@@ -42,12 +42,12 @@ repositories {
     }
     dependencies {
 
-        def version = "t6"
+        def version = "1.0"
 
-        implementation "com.github.bayescom:EasyAds-Android:$version"
-//        implementation "com.github.bayescom:EasyAds-Android:easyads:$version"
-//        implementation "com.github.bayescom:EasyAds-Android:easyylh:$version"
-//        implementation "com.github.bayescom:EasyAds-Android:easycsj:$version"
+//        implementation "com.github.bayescom:EasyAds-Android:$version"
+//        implementation "com.github.bayescom:easyads:1.0"
+//        implementation "com.github.bayescom:EasyAds-Android:easyylh:1.0_4431"
+//        implementation "com.github.bayescom:EasyAds-Android:$version"
 //        implementation "com.github.bayescom:EasyAds-Android:easyks:$version"
 //        implementation "com.github.bayescom:EasyAds-Android:easybd:$version"
 
