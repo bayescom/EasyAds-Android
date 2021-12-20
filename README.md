@@ -90,6 +90,7 @@ allprojects {
 
 <font color=red>**注：**</font>
 
+<font color=red>我是红色</font>
 为了方便开发者配置流量分发策略，我们也提供了在线可视化的便捷工具[EasyTools](http://easyads.bayescom.cn/)，方便生成广告位的策略配置JSON。
 
 
