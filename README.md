@@ -30,7 +30,18 @@ allprojects {
 在项目module目录下的build.gradle 文件中添加SDK内容依赖
 
 ```
-！！！！！这里需要添加！！！！
+    dependencies {
+        //EasyAds sdk（必须）
+        implementation "com.github.bayescom:EasyAds-Android:1.0"
+        //穿山甲广告SDK（推荐）
+        implementation(name: "open_ad_sdk_4105", ext: "aar")
+        //优量汇广告SDK（推荐）
+        implementation(name: "GDTSDK_4431", ext: "aar")
+        //快手广告SDK（可选）
+        implementation(name: "kssdk-ad_3318", ext: "aar")
+        //百度广告SDK（可选）
+        implementation(name: "Baidu_MobAds_SDK_918", ext: "aar")
+    }
 ```
 
 **方式二**：
@@ -48,9 +59,9 @@ allprojects {
 
 其中，suppliers字段下配置媒体在穿山甲和优量汇平台申请的广告代码位信息，rules字段下配置流量分发策略及比例；
 
-策略JSON的配置说明详细见：[SDK策略配置JSON说明](https://github.com/bayescom/EasyAds-Android/wiki/%E7%AD%96%E7%95%A5Json%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E)
+策略JSON的配置说明详细见：[SDK策略配置JSON说明](https://github.com/bayescom/EasyAds-Android/wiki/2.-SDK%E5%88%86%E5%8F%91%E7%AD%96%E7%95%A5%E9%85%8D%E7%BD%AEJSON)
 
-不同广告位的JSON策略配置示例见：[不同广告位JSON配置示例](https://github.com/bayescom/EasyAds-Android/tree/luyao_updaet/example/src/main/assets)
+不同广告位的JSON策略配置示例见：[不同广告位JSON配置示例](https://github.com/bayescom/EasyAds-Android/tree/main/example/src/main/assets)
 
 ```json
 {

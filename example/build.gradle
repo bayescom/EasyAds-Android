@@ -42,16 +42,18 @@ repositories {
     }
     dependencies {
 
-        def version = "1.0"
+        //EasyAds sdk（必须）
+        implementation "com.github.bayescom:EasyAds-Android:1.0"
+        //穿山甲广告SDK(建议)
+        implementation(name: "open_ad_sdk_4105", ext: "aar")
+        //优量汇广告SDK(建议)
+        implementation(name: "GDTSDK_4431", ext: "aar")
+        //百度广告SDK（可选）
+        implementation(name: "Baidu_MobAds_SDK_918", ext: "aar")
+        //快手广告SDK（可选）
+        implementation(name: "kssdk-ad_3318", ext: "aar")
 
-//        implementation "com.github.bayescom:EasyAds-Android:$version"
-//        implementation "com.github.bayescom:EasyAds-Android:$version"
-        implementation 'com.github.bayescom:EasyAds-Android:rlt4'
-//        implementation "com.github.bayescom:EasyAds-Android:easyylh:1.0_4431"
-//        implementation "com.github.bayescom:EasyAds-Android:$version"
-//        implementation "com.github.bayescom:EasyAds-Android:easyks:$version"
-//        implementation "com.github.bayescom:EasyAds-Android:easybd:$version"
-
+// library方式引入
 //        implementation project(path: ':easyads')
 //
 //        implementation project(path: ':easyylh')
@@ -59,12 +61,12 @@ repositories {
 //        implementation project(path: ':easybd')
 //        implementation project(path: ':easyks')
 
-        //小米广告SDK
+        //自定义-小米广告SDK
         implementation(name: "mimo-ad-sdk", ext: "aar")
-        //小米广告SDK需要额外引入gson
+        //自定义-小米广告SDK需要额外引入gson
         implementation 'com.google.code.gson:gson:2.8.5'
 
-        //华为广告SDK
+        //自定义-华为广告SDK
         implementation 'com.huawei.hms:ads-lite:13.4.49.301'
 
 //        以下部分为公共引用部分
