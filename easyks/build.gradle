@@ -72,8 +72,8 @@ dependencies {
 }
 
 
-android.libraryVariants.all { variant ->
-    variant.outputs.all {
-        outputFileName = outputName
-    }
-}
+//android.libraryVariants.all { variant ->
+//    variant.outputs.all {
+//        outputFileName = outputName
+//    }
+//}

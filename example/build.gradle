@@ -45,7 +45,8 @@ repositories {
         def version = "1.0"
 
 //        implementation "com.github.bayescom:EasyAds-Android:$version"
-//        implementation 'com.github.bayescom:EasyAds-Android:easyads:1.0'
+//        implementation "com.github.bayescom:EasyAds-Android:$version"
+        implementation 'com.github.bayescom:EasyAds-Android:rlt4'
 //        implementation "com.github.bayescom:EasyAds-Android:easyylh:1.0_4431"
 //        implementation "com.github.bayescom:EasyAds-Android:$version"
 //        implementation "com.github.bayescom:EasyAds-Android:easyks:$version"
