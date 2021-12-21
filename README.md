@@ -188,6 +188,6 @@ QQ群：
 
 QQ群二维码：
 
-![image](https://e.gitee.com/bayescom/repos/bayescom/EasyAds/blob/main/image/easyads_qq.png)
+![image](https://gitee.com/bayescom/EasyAds/raw/main/image/easyads_qq.png)
 
 邮件技术支持：<easyads@bayescom.com>
