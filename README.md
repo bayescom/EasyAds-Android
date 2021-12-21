@@ -5,7 +5,7 @@
 | SDK平台 | 开屏 | 激励视频 | 横幅 | 插屏(弹窗) | 模板信息流 | 全屏视频 | draw信息流 |
 |-------|---|---|---|---|---|---|---| 
 | 穿山甲   | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| 广点通   | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
+| 优量汇   | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
 | 百青藤   | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
 | 快手    | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ |
  
@@ -105,7 +105,7 @@ allprojects {
 EasyAdSplash easySplash = new EasyAdSplash(mActivity, adContainer, listener);
 ```
 
-####  2.3.2 初始化广告对象
+####  2.3.2 设置执行策略
 
 调用共有方法`setData(String strategyJson)`，给当前位置广告**赋予执行策略**，即2.2步骤中生成的SDK分发策略配置。
 
@@ -135,33 +135,39 @@ easySplash.show();
 
 #### 2.3.4 各广告位集成实现
 
-* [开屏广告：EasyAdSplash](https://github.com/bayescom/EasyAds-Android/wiki/%E5%BC%80%E5%B1%8F%E5%B9%BF%E5%91%8A)
+* [开屏广告：EasyAdSplash](https://github.com/bayescom/EasyAds-Android/wiki/3.1-%E5%BC%80%E5%B1%8F%E5%B9%BF%E5%91%8A)
 
-* [插屏广告：EasyAdInterstitial](插屏广告)
+* [插屏广告：EasyAdInterstitial](https://github.com/bayescom/EasyAds-Android/wiki/3.2-%E6%8F%92%E5%B1%8F%28%E5%BC%B9%E7%AA%97%29%E5%B9%BF%E5%91%8A)
 
-* [横幅广告：EasyAdBanner](横幅广告)
+* [横幅广告：EasyAdBanner](https://github.com/bayescom/EasyAds-Android/wiki/3.3-%E6%A8%AA%E5%B9%85%E5%B9%BF%E5%91%8A)
 
-* [原生模板、信息流广告：EasyAdNativeExpress](原生模板、信息流广告)
+* [原生模板、信息流广告：EasyAdNativeExpress](https://github.com/bayescom/EasyAds-Android/wiki/3.4-%E5%8E%9F%E7%94%9F%E6%A8%A1%E6%9D%BF%E3%80%81%E4%BF%A1%E6%81%AF%E6%B5%81%E5%B9%BF%E5%91%8A)
 
-* [激励视频广告：EasyAdRewardVideo](激励视频广告)
+* [激励视频广告：EasyAdRewardVideo](https://github.com/bayescom/EasyAds-Android/wiki/3.5-%E6%BF%80%E5%8A%B1%E8%A7%86%E9%A2%91%E5%B9%BF%E5%91%8A)
 
-* [全屏视频广告：EasyAdFullScreenVideo](全屏视频广告)
+* [全屏视频广告：EasyAdFullScreenVideo](https://github.com/bayescom/EasyAds-Android/wiki/3.6-%E5%85%A8%E5%B1%8F%E8%A7%86%E9%A2%91%E5%B9%BF%E5%91%8A)
 
-* [DRAW视频信息流广告：EasyAdDraw](DRAW视频信息流广告)
+* [DRAW视频信息流广告：EasyAdDraw](https://github.com/bayescom/EasyAds-Android/wiki/3.7-DRAW%E8%A7%86%E9%A2%91%E4%BF%A1%E6%81%AF%E6%B5%81%E5%B9%BF%E5%91%8A)
 
 ## 3. 进阶设置
 
-### 3.1 SDK全局配置详细说明
-[SDK全局配置]()
+### 3.1 SDK全局配置
+
+App多广告位情况下，想要优化SDK的广告位配置，可参考[SDK全局配置](https://github.com/bayescom/EasyAds-Android/wiki/4.-SDK%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE)优化管理你的众多广告位。
+
 
 ### 3.2 自定义广告SDK渠道
-[自定义广告SDK渠道]()
+
+想要使用其他的广告SDK，[自定义广告SDK渠道](https://github.com/bayescom/EasyAds-Android/wiki/5.-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B9%BF%E5%91%8ASDK%E6%B8%A0%E9%81%93)可以帮你轻松加入任何广告SDK。
+
 
 ## 4. SDK错误码 & 常见问题 
 
-[SDK错误码](https://github.com/bayescom/EasyAds-Android/wiki/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8#31-%E9%94%99%E8%AF%AF%E7%A0%81)
+调试遇到问题？欢迎查询SDK错误码及常见问题FAQ，帮助你快速解决对接中遇到的问题。
 
-[常见问题](https://github.com/bayescom/EasyAds-Android/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98FAQ)
+[SDK错误码](https://github.com/bayescom/EasyAds-Android/wiki/6.1-SDK%E9%94%99%E8%AF%AF%E7%A0%81)
+
+[常见问题](https://github.com/bayescom/EasyAds-Android/wiki/6.2-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98)
 
 
 ## 技术支持
@@ -171,6 +177,6 @@ QQ群：
 
 QQ群二维码：
 
-![image](./docs/image/easyads_qq.png)
+![image](http://www.bayescom.com/uploads/20211220/43af3f34fc5a7bb50d84f94e374b3e98.png)
 
 邮件技术支持：<easyads@bayescom.com>
