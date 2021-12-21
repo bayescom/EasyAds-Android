@@ -105,7 +105,7 @@ allprojects {
 EasyAdSplash easySplash = new EasyAdSplash(mActivity, adContainer, listener);
 ```
 
-####  2.3.2 初始化广告对象
+####  2.3.2 设置执行策略
 
 调用共有方法`setData(String strategyJson)`，给当前位置广告**赋予执行策略**，即2.2步骤中生成的SDK分发策略配置。
 
