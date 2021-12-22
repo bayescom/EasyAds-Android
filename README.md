@@ -1,4 +1,5 @@
 # EasyAds-Android 快速指引
+[![](https://jitpack.io/v/bayescom/EasyAds-Android.svg)](https://jitpack.io/#bayescom/EasyAds-Android)
 
 ## 1. 支持的SDK平台及广告位
 
