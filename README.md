@@ -32,16 +32,17 @@ allprojects {
 
 ```
     dependencies {
-        //EasyAds sdk（必须）
-        implementation "com.github.bayescom:EasyAds-Android:1.0"
-        //穿山甲广告SDK（推荐）
-        implementation(name: "open_ad_sdk_4105", ext: "aar")
-        //优量汇广告SDK（推荐）
-        implementation(name: "GDTSDK_4431", ext: "aar")
-        //快手广告SDK（可选）
-        implementation(name: "kssdk-ad_3318", ext: "aar")
+       //EasyAds sdk（必须）
+        implementation "com.github.bayescom:EasyAds-Android:1.1"
+
+        //穿山甲广告SDK(建议)
+        implementation(name: "open_ad_sdk_4908", ext: "aar")
+        //优量汇广告SDK(建议)
+        implementation(name: "GDTSDK_4492", ext: "aar")
         //百度广告SDK（可选）
-        implementation(name: "Baidu_MobAds_SDK_918", ext: "aar")
+        implementation(name: "Baidu_MobAds_SDK_9241", ext: "aar")
+        //快手广告SDK（可选）
+        implementation(name: "kssdk-ad-3334", ext: "aar")
     }
 ```
 
