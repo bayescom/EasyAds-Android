@@ -82,10 +82,8 @@ public class EasyADController {
             @Override
             public void onAdSucceed() {
                 logAndToast(mActivity, "广告加载成功");
-                if (EasyAdsConstant.SDK_TAG_CSJ.equals(baseAD.getSupplierInf().tag)) {
-                    if (logoContainer != null)
-                        logoContainer.setVisibility(View.VISIBLE);
-                }
+                if (logoContainer != null)
+                    logoContainer.setVisibility(View.VISIBLE);
 
             }
 
@@ -94,9 +92,6 @@ public class EasyADController {
                 //设置开屏父布局背景色为白色
                 if (adContainer != null)
                     adContainer.setBackgroundColor(Color.WHITE);
-                //logo展示建议：广告展示的时候再展示logo，其他时刻都是展示的全屏的background图片
-                if (logoContainer != null)
-                    logoContainer.setVisibility(View.VISIBLE);
 
 
                 logAndToast(mActivity, "广告展示成功");

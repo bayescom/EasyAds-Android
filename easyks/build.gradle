@@ -9,7 +9,7 @@ group = 'com.github.bayescom'
 //maven依赖的项目名称
 def pomName = "easyads-ks"
 
-def VersionCode = 3318
+def VersionCode = 3334
 def VersionName = "${rootProject.ext.EasyAds_version}_" + VersionCode
 
 def outputName = pomName + "_" + VersionName + ".aar"
@@ -60,7 +60,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    def aarName = "kssdk-ad_" + VersionCode
+    def aarName = "kssdk-ad-" + VersionCode
     //发布时用embed捆绑aar包
     if (rootProject.ext.releaseSDK) {
         embed(name: aarName, ext: 'aar')

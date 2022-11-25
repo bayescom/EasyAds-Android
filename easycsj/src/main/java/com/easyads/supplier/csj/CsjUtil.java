@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bytedance.sdk.openadsdk.CSJSplashAd;
 import com.easyads.EasyAdsManger;
 import com.easyads.core.EABaseSupplierAdapter;
 import com.easyads.itf.BaseEnsureListener;
@@ -23,6 +24,7 @@ import com.bytedance.sdk.openadsdk.TTSplashAd;
 
 import java.lang.ref.SoftReference;
 import java.util.Arrays;
+import java.util.Map;
 
 public class CsjUtil implements EASplashPlusManager.ZoomCall {
 
@@ -160,6 +162,28 @@ public class CsjUtil implements EASplashPlusManager.ZoomCall {
                         EasyAdsManger.getInstance().hasCSJInit = false;
                     }
                 });
+    }
+
+
+
+    public static void getCPMInfNew(String TAG, CSJSplashAd newSplashAd) {
+        try {
+            Map<String, Object> extraInfo = newSplashAd.getMediaExtraInfo();
+            //设置cpm
+            double cpm = 0;
+            if (extraInfo != null) {
+                Object price = extraInfo.get("price");
+                if (price != null) {
+                    if (price instanceof Double) {
+                        cpm = (double) price;
+                    }
+                }
+            }
+            EALog.devDebug(TAG + " cpm = " + cpm);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**

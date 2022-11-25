@@ -95,18 +95,6 @@ public class YlhBannerAdapter extends EABannerCustomAdapter implements UnifiedBa
     }
 
     @Override
-    public void onADOpenOverlay() {
-        EALog.high(TAG + "onADOpenOverlay");
-
-    }
-
-    @Override
-    public void onADCloseOverlay() {
-        EALog.high(TAG + "onADCloseOverlay");
-
-    }
-
-    @Override
     protected void doLoadAD() {
         YlhUtil.initAD(this);
         bv = new UnifiedBannerView(getActivity(), sdkSupplier.adspotId, this);

@@ -50,7 +50,7 @@ public class CsjNativeExpressAdapter extends EANativeExpressCustomAdapter implem
                 .setCodeId(sdkSupplier.adspotId) //广告位id
                 .setSupportDeepLink(true)
                 .setAdCount(1) //请求广告数量为1到3条
-                .setDownloadType(EasyCsjManger.getInstance().csj_downloadType)
+//                .setDownloadType(EasyCsjManger.getInstance().csj_downloadType)
                 .setExpressViewAcceptedSize(setting.getExpressViewWidth(), setting.getExpressViewHeight()) //期望模板广告view的size,单位dp
                 .build();
         //加载广告

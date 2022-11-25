@@ -12,7 +12,6 @@ import com.qq.e.ads.rewardvideo.RewardVideoAD;
 import com.qq.e.ads.rewardvideo.RewardVideoADListener;
 import com.qq.e.ads.rewardvideo.ServerSideVerificationOptions;
 import com.qq.e.comm.util.AdError;
-import com.qq.e.comm.util.VideoAdValidity;
 
 import java.lang.ref.SoftReference;
 import java.util.Map;
@@ -148,27 +147,7 @@ public class YlhRewardVideoAdapter extends EARewardCustomAdapter implements Rewa
 
     public boolean checkRewardOk() {
         try {
-            VideoAdValidity validity;
-            long expireTimestamp = getExpireTimestamp();
-
-            validity = rewardVideoAD.checkValidity();
-            EALog.high(TAG + " elapsedRealtime = " + SystemClock.elapsedRealtime() + "  expireTimestamp = " + expireTimestamp);
-            switch (validity) {
-                case SHOWED:
-                    EALog.high(TAG + " 当前激励视频广告已被展示过");
-
-                    return false;
-                case OVERDUE:
-                    EALog.high(TAG + " 激励视频广告已过期");
-
-                    return false;
-                case NONE_CACHE:
-                    EALog.high(TAG + "广告素材未缓存成功");
-
-                case VALID:
-                    EALog.high(TAG + " 广告有效");
-                    break;
-            }
+            return rewardVideoAD.isValid();
         } catch (Throwable e) {
             e.printStackTrace();
         }
@@ -176,14 +155,6 @@ public class YlhRewardVideoAdapter extends EARewardCustomAdapter implements Rewa
     }
 
 
-    public long getExpireTimestamp() {
-        try {
-            return rewardVideoAD.getExpireTimestamp();
-        } catch (Throwable e) {
-            e.printStackTrace();
-            return 0L;
-        }
-    }
 
 
 }

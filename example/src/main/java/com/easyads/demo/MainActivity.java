@@ -19,9 +19,9 @@ import com.easyads.demo.utils.BaseCallBack;
 import com.easyads.demo.utils.Constant;
 import com.easyads.demo.utils.NormalSetting;
 import com.easyads.demo.utils.UserPrivacyDialog;
-//import com.bytedance.sdk.openadsdk.TTAdSdk;
+import com.bytedance.sdk.openadsdk.TTAdSdk;
 import com.kwad.sdk.api.KsAdSDK;
-//import com.qq.e.comm.managers.status.SDKStatus;
+import com.qq.e.comm.managers.status.SDKStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,8 +68,8 @@ public class MainActivity extends BaseActivity {
         }
 
         version.setText("版本号：EasyAds聚合SDK：v" + EasyAds.getVersion() +
-//                "\n穿山甲：v" + TTAdSdk.getAdManager().getSDKVersion() +
-//                "    优量汇：v" + SDKStatus.getSDKVersion() +
+                "\n穿山甲：v" + TTAdSdk.getAdManager().getSDKVersion() +
+                "    优量汇：v" + SDKStatus.getSDKVersion() +
                 "    百度：v" + AdSettings.getSDKVersion() + "    快手：v" + KsAdSDK.getSDKVersion());
 
     }

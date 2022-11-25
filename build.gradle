@@ -1,6 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-def version = '1.0'
+def version = '1.1'
 
 ext {
     //统一版本号，同时使用在渠道版本号信息中
