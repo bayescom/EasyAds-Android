@@ -145,6 +145,7 @@ public class YlhSplashAdapter extends EASplashCustomAdapter {
     private void zoomOut() {
         try {
             SplashZoomOutManager zoomOutManager = SplashZoomOutManager.getInstance();
+            zoomOutManager.initSize(getActivity());
             zoomOutManager.setSplashInfo(splashAD, adContainer.getChildAt(0),
                     getActivity().getWindow().getDecorView());
             if (mSplashSetting == null) {

@@ -8,7 +8,6 @@
     tools:context=".InterstitialActivity">
 
     <Button
-        android:id="@+id/interstitial_load_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -16,13 +15,11 @@
         android:text="加载插屏广告" />
 
     <Button
-        android:id="@+id/interstitial_show_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="showAd"
         android:text="展示插屏广告" />
     <Button
-        android:id="@+id/interstitial_las_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

@@ -15,6 +15,7 @@ import com.baidu.mobads.sdk.api.StyleParams;
 import com.baidu.mobads.sdk.api.XAdNativeResponse;
 
 import java.lang.ref.SoftReference;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -89,7 +90,10 @@ public class BDNativeExpressAdapter extends EANativeExpressCustomAdapter impleme
                      * registerViewForInteraction()与BaiduNativeManager配套使用
                      * 警告：调用该函数来发送展现，勿漏！
                      */
-                    nativeResponse.registerViewForInteraction(setting.getAdContainer(), this);
+
+                    List<View> clickViews = new ArrayList<>();
+                    List<View> creativeViews = new ArrayList<>();
+                    nativeResponse.registerViewForInteraction(setting.getAdContainer(),clickViews, creativeViews,this);
 
                     nativeResponse.setAdPrivacyListener(new NativeResponse.AdPrivacyListener() {
                         @Override

@@ -50,6 +50,7 @@ public class EasyAdInterstitial extends EasyAdBaseAdspot implements EAInterstiti
         this.csjExpressViewHeight = expressViewHeight;
     }
 
+    @Deprecated
     public void setCsjNew(boolean csjNew) {
         isCsjNew = csjNew;
     }

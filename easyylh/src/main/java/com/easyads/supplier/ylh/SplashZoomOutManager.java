@@ -12,7 +12,6 @@ import com.easyads.utils.EALog;
 import com.easyads.utils.ScreenUtil;
 import com.easyads.utils.EASplashZoomOutLayout;
 import com.qq.e.ads.splash.SplashAD;
-import com.qq.e.comm.managers.GDTADManager;
 
 
 public class SplashZoomOutManager {
@@ -51,13 +50,17 @@ public class SplashZoomOutManager {
     }
 
     private SplashZoomOutManager() {
+
+    }
+
+
+    public void initSize(Context context) {
         try {
-            Context context = GDTADManager.getInstance().getAppContext();
             int deviceWidth = Math.min(ScreenUtil.getScreenHeightC(context), ScreenUtil.getScreenWidthC(context));
             EALog.high(TAG + "deviceWidth = " + deviceWidth + "， context = " + context);
 
-            zoomOutWidth = Math.round(deviceWidth * 0.3f);//屏幕宽度的30%
-            zoomOutHeight = Math.round(zoomOutWidth * 16 / 9);//根据宽度计算高度
+            zoomOutWidth = Math.round(deviceWidth * 0.3f);//屏幕宽度的30%，之前使用PxUtils.dpToPx(context, 90);
+            zoomOutHeight = Math.round(zoomOutWidth * 16 / 9);//根据宽度计算高度，之前使用PxUtils.dpToPx(context, 160);
 
             zoomOutMargin = ScreenUtil.dip2pxC(context, 6);
             zoomOutAbove = ScreenUtil.dip2pxC(context, 100);
@@ -67,7 +70,6 @@ public class SplashZoomOutManager {
             e.printStackTrace();
         }
     }
-
     /**
      * 用于开屏v+在两个activity之间传递数据
      *

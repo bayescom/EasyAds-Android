@@ -7,7 +7,6 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/load_rewardvideo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -15,7 +14,6 @@
         android:text="请求激励视频" />
 
     <Button
-        android:id="@+id/show_rewardvideo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onShow"
@@ -23,7 +21,6 @@
 
 
     <Button
-        android:id="@+id/load_show_rewardvideo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

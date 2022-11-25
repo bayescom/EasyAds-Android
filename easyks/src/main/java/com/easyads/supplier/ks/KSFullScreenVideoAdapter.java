@@ -42,8 +42,9 @@ public class KSFullScreenVideoAdapter extends EAFullScreenCustomAdapter implemen
                 }
 
                 @Override
-                public void onRequestResult(int adNumber) {
-                    EALog.high(TAG + "onRequestResult, 广告填充数量：" + adNumber);
+                public void onFullScreenVideoResult(@Nullable List<KsFullScreenVideoAd> list) {
+                    EALog.high(TAG + "onFullScreenVideoResult  ");
+
                 }
 
                 @Override

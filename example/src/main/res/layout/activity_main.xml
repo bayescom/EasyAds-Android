@@ -31,7 +31,6 @@
             android:text="晃动手机查看SDK执行日志" />
 
         <Button
-            android:id="@+id/banner_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -45,7 +44,6 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/splash_button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -64,7 +62,6 @@
 
 
         <Button
-            android:id="@+id/interstitial_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onInterstitial"
@@ -72,14 +69,12 @@
 
 
         <Button
-            android:id="@+id/native_express_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onNativeExpress"
             android:text="原生模板广告" />
 
         <Button
-            android:id="@+id/native_express_recycler_view_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onNativeExpressRecyclerView"
@@ -87,21 +82,18 @@
 
 
         <Button
-            android:id="@+id/rewardvideo_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onRewardVideo"
             android:text="激励视频广告" />
 
         <Button
-            android:id="@+id/fullvideo_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onFullVideo"
             android:text="全屏视频广告" />
 
         <Button
-            android:id="@+id/btn_draw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="draw"

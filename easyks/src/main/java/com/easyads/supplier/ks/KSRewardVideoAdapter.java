@@ -11,6 +11,7 @@ import com.kwad.sdk.api.KsAdSDK;
 import com.kwad.sdk.api.KsLoadManager;
 import com.kwad.sdk.api.KsRewardVideoAd;
 import com.kwad.sdk.api.KsScene;
+import com.kwad.sdk.api.model.KsExtraRewardType;
 
 import java.lang.ref.SoftReference;
 import java.util.List;
@@ -39,9 +40,15 @@ public class KSRewardVideoAdapter extends EARewardCustomAdapter implements KsRew
                 }
 
                 @Override
-                public void onRequestResult(int adNumber) {
-                    EALog.high(TAG + "onRequestResult，广告填充数量：" + adNumber);
+                public void onRewardVideoResult(@Nullable List<KsRewardVideoAd> list) {
+                    EALog.high(TAG + "onRewardVideoResult  ");
+
                 }
+//
+//                @Override
+//                public void onRequestResult(int adNumber) {
+//                    EALog.high(TAG + "onRequestResult，广告填充数量：" + adNumber);
+//                }
 
                 @Override
                 public void onRewardVideoAdLoad(@Nullable List<KsRewardVideoAd> list) {
@@ -138,6 +145,11 @@ public class KSRewardVideoAdapter extends EARewardCustomAdapter implements KsRew
     public void onRewardStepVerify(int taskType, int currentTaskStatus) {
         EALog.high(TAG + " onRewardStepVerify , taskType :" + taskType + "，currentTaskStatus = " + currentTaskStatus);
 
+    }
+
+    @Override
+    public void onExtraRewardVerify(@KsExtraRewardType int extraRewardType) {
+        EALog.high(TAG + " onExtraRewardVerify , extraRewardType :" + extraRewardType);
     }
 
 

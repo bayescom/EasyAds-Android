@@ -82,16 +82,6 @@ public class YlhNativeExpressAdapter extends EANativeExpressCustomAdapter {
             }
 
             @Override
-            public void onADOpenOverlay(NativeExpressADView nativeExpressADView) {
-
-            }
-
-            @Override
-            public void onADCloseOverlay(NativeExpressADView nativeExpressADView) {
-
-            }
-
-            @Override
             public void onNoAD(AdError adError) {
                 onNoADEV(adError);
             }

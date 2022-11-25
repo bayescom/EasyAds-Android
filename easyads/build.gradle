@@ -63,10 +63,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     //   the needed aars are here
-    compileOnly(name: 'open_ad_sdk_3803', ext: 'aar')
-    compileOnly(name: 'GDTSDK_4422', ext: 'aar')
-    compileOnly(name: 'Baidu_MobAds_SDK_9131', ext: 'aar')
-    compileOnly(name: 'kssdk-ad_3310', ext: 'aar')
+    compileOnly(name: 'open_ad_sdk_4908', ext: 'aar')
+    compileOnly(name: 'GDTSDK_4492', ext: 'aar')
+    compileOnly(name: 'Baidu_MobAds_SDK_9241', ext: 'aar')
+    compileOnly(name: 'kssdk-ad-3334', ext: 'aar')
 }
 
 

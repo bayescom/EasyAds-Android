@@ -5,6 +5,9 @@ import android.support.annotation.MainThread;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bytedance.sdk.openadsdk.CSJAdError;
+import com.bytedance.sdk.openadsdk.CSJSplashAd;
+import com.bytedance.sdk.openadsdk.CSJSplashCloseType;
 import com.easyads.EasyAdsManger;
 import com.easyads.core.splash.EASplashSetting;
 import com.easyads.custom.EASplashCustomAdapter;
@@ -21,7 +24,7 @@ import com.bytedance.sdk.openadsdk.TTSplashAd;
 import java.lang.ref.SoftReference;
 
 public class CsjSplashAdapter extends EASplashCustomAdapter {
-    private TTSplashAd splashAd;
+    private CSJSplashAd newSplashAd;
 
     public CsjSplashAdapter(SoftReference<Activity> activity, EASplashSetting setting) {
         super(activity, setting);
@@ -34,11 +37,11 @@ public class CsjSplashAdapter extends EASplashCustomAdapter {
 
     @Override
     protected void doShowAD() {
-        initSplashClickEyeData();
+//        initSplashClickEyeData();
 
-        if (splashAd != null) {
+        if (newSplashAd != null) {
             //获取SplashView
-            View view = splashAd.getSplashView();
+            View view = newSplashAd.getSplashView();
             //渲染之前判断activity生命周期状态
             if (!EAUtil.isActivityDestroyed(softReferenceActivity)) {
                 adContainer.removeAllViews();
@@ -89,99 +92,100 @@ public class CsjSplashAdapter extends EASplashCustomAdapter {
                     .setSupportDeepLink(true)
                     .setExpressViewAcceptedSize(mSplashSetting.getCsjExpressViewWidth(), mSplashSetting.getCsjExpressViewHeight())
                     .setImageAcceptedSize(mSplashSetting.getCsjAcceptedSizeWidth(), mSplashSetting.getCsjAcceptedSizeHeight())
-                    .setSplashButtonType(EasyCsjManger.getInstance().csj_splashButtonType)
-                    .setDownloadType(EasyCsjManger.getInstance().csj_downloadType)
                     .build();
         } else {
             adSlot = new AdSlot.Builder()
                     .setCodeId(sdkSupplier.adspotId)
                     .setSupportDeepLink(true)
                     .setImageAcceptedSize(mSplashSetting.getCsjAcceptedSizeWidth(), mSplashSetting.getCsjAcceptedSizeHeight())
-                    .setSplashButtonType(EasyCsjManger.getInstance().csj_splashButtonType)
-                    .setDownloadType(EasyCsjManger.getInstance().csj_downloadType)
                     .build();
         }
 
         TTAdNative ttAdNative = CsjUtil.getADManger(this).createAdNative(getActivity());
-        ttAdNative.loadSplashAd(adSlot, new TTAdNative.SplashAdListener() {
+        ttAdNative.loadSplashAd(adSlot, new TTAdNative.CSJSplashAdListener() {
             @Override
-            @MainThread
-            public void onError(int code, String message) {
-                EALog.high(TAG + "onError , code = " + code + ", msg = " + message);
-                handleFailed(code, message);
+            public void onSplashLoadSuccess() {
+                EALog.high(TAG + "onSplashLoadSuccess");
+
             }
 
             @Override
-            @MainThread
-            public void onTimeout() {
-                String emsg = TAG + "onTimeout";
-                EALog.high(emsg);
-                EasyAdError error = EasyAdError.parseErr(EasyAdError.ERROR_CSJ_TIMEOUT, emsg);
-
-                handleFailed(error);
+            public void onSplashLoadFail(CSJAdError csjAdError) {
+                EALog.high(TAG + "onSplashLoadFail");
+                newApiAdFailed(csjAdError, EasyAdError.ERROR_EXCEPTION_LOAD, "onSplashLoadFail");
             }
 
             @Override
-            @MainThread
-            public void onSplashAdLoad(TTSplashAd ad) {
-                try {
-                    if (ad == null) {
-                        String nMsg = TAG + " TTSplashAd null";
-                        EasyAdError error = EasyAdError.parseErr(EasyAdError.ERROR_DATA_NULL, nMsg);
-                        handleFailed(error);
-                        return;
+            public void onSplashRenderSuccess(CSJSplashAd csjSplashAd) {
+                EALog.high(TAG + "onAdLoaded");
+
+
+                if (csjSplashAd == null) {
+                    String nMsg = TAG + " TTSplashAd null";
+                    EasyAdError error = EasyAdError.parseErr(EasyAdError.ERROR_DATA_NULL, nMsg);
+                    handleFailed(error);
+                    return;
+                }
+                newSplashAd = csjSplashAd;
+                handleSucceed();
+                newSplashAd.setSplashAdListener(new CSJSplashAd.SplashAdListener() {
+
+                    @Override
+                    public void onSplashAdShow(CSJSplashAd csjSplashAd) {
+                        EALog.high(TAG + "onSplashAdShow");
+
+                        handleExposure();
                     }
-                    splashAd = ad;
-                    EALog.high(TAG + "onAdLoaded");
 
-                    handleSucceed();
+                    @Override
+                    public void onSplashAdClick(CSJSplashAd csjSplashAd) {
+                        EALog.high(TAG + "onSplashAdClick");
+                        handleClick();
+                    }
 
-                    //设置不开启开屏广告倒计时功能以及不显示跳过按钮,如果这么设置，您需要自定义倒计时逻辑
-                    //ad.setNotAllowSdkCountdown();
-                    //设置SplashView的交互监听器
-                    ad.setSplashInteractionListener(new TTSplashAd.AdInteractionListener() {
-                        @Override
-                        public void onAdClicked(View view, int type) {
-                            EALog.high(TAG + "onAdClicked");
-
-                            handleClick();
-                        }
-
-                        @Override
-                        public void onAdShow(View view, int type) {
-                            EALog.high(TAG + "onAdShow");
-
-                            handleExposure();
-                        }
-
-                        @Override
-                        public void onAdSkip() {
-                            EALog.high(TAG + "onAdSkip");
-
-                            if (mSplashSetting != null) {
+                    @Override
+                    public void onSplashAdClose(CSJSplashAd csjSplashAd, int closeType) {
+                        EALog.high(TAG + "onSplashAdClose");
+                        if (mSplashSetting != null) {
+                            if (closeType == CSJSplashCloseType.CLICK_SKIP) {
+                                mSplashSetting.adapterDidSkip(sdkSupplier);
+                            } else if (closeType == CSJSplashCloseType.COUNT_DOWN_OVER) {
+                                mSplashSetting.adapterDidTimeOver(sdkSupplier);
+                            } else {
                                 mSplashSetting.adapterDidSkip(sdkSupplier);
                             }
-                            switchSplashClickShow();
-
                         }
-
-                        @Override
-                        public void onAdTimeOver() {
-                            EALog.high(TAG + "onAdTimeOver");
-                            if (mSplashSetting != null) {
-                                mSplashSetting.adapterDidTimeOver(sdkSupplier);
-                            }
-                            switchSplashClickShow();
-
-                        }
-                    });
-                } catch (Throwable e) {
-                    e.printStackTrace();
-                    handleFailed(EasyAdError.parseErr(EasyAdError.ERROR_EXCEPTION_LOAD));
-                }
+                    }
+                });
+                CsjUtil.getCPMInfNew(TAG, newSplashAd);
 
             }
+
+
+            @Override
+            public void onSplashRenderFail(CSJSplashAd csjSplashAd, CSJAdError csjAdError) {
+                EALog.high(TAG + "onSplashRenderFail");
+
+                newApiAdFailed(csjAdError, EasyAdError.ERROR_RENDER_FAILED, "onSplashRenderFail");
+
+            }
+
         }, 5000);
+    }
+
+
+    private void newApiAdFailed(CSJAdError csjAdError, String errCodeDefault, String errExt) {
+        try {
+            EasyAdError error;
+            if (csjAdError == null) {
+                error = EasyAdError.parseErr(errCodeDefault, errExt);
+            } else {
+                error = EasyAdError.parseErr(csjAdError.getCode(), csjAdError.getMsg());
+            }
+            handleFailed(error);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -205,25 +209,25 @@ public class CsjSplashAdapter extends EASplashCustomAdapter {
     }
 
     //初始化点睛广告数据、类
-    private void initSplashClickEyeData() {
-        try {
-            if (splashAd == null) {
-                return;
-            }
-            View splashView = splashAd.getSplashView();
-            if (splashView == null) {
-                return;
-            }
-            SplashClickEyeListener mSplashClickEyeListener = new SplashClickEyeListener(getActivity(), splashAd, adContainer);
-
-            splashAd.setSplashClickEyeListener(mSplashClickEyeListener);
-            CSJSplashClickEyeManager csjSplashClickEyeManager = CSJSplashClickEyeManager.getInstance();
-            csjSplashClickEyeManager.init(getActivity());
-            csjSplashClickEyeManager.setSplashInfo(splashAd, splashView, getActivity().getWindow().getDecorView());
-        } catch (Throwable e) {
-            e.printStackTrace();
-        }
-    }
+//    private void initSplashClickEyeData() {
+//        try {
+//            if (splashAd == null) {
+//                return;
+//            }
+//            View splashView = splashAd.getSplashView();
+//            if (splashView == null) {
+//                return;
+//            }
+//            SplashClickEyeListener mSplashClickEyeListener = new SplashClickEyeListener(getActivity(), splashAd, adContainer);
+//
+//            splashAd.setSplashClickEyeListener(mSplashClickEyeListener);
+//            CSJSplashClickEyeManager csjSplashClickEyeManager = CSJSplashClickEyeManager.getInstance();
+//            csjSplashClickEyeManager.init(getActivity());
+//            csjSplashClickEyeManager.setSplashInfo(splashAd, splashView, getActivity().getWindow().getDecorView());
+//        } catch (Throwable e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 
     public static class SplashClickEyeListener implements ISplashClickEyeListener {

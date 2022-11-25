@@ -1,6 +1,7 @@
 package com.easyads.supplier.csj;
 
 import android.app.Activity;
+import android.os.Bundle;
 
 import com.easyads.core.reward.EARewardServerCallBackInf;
 import com.easyads.core.reward.EARewardVideoSetting;
@@ -91,14 +92,11 @@ public class CsjRewardVideoAdapter extends EARewardCustomAdapter implements TTAd
                 .setAdCount(1)
                 //设置模板属性
                 .setExpressViewAcceptedSize(500, 500)
-                .setRewardName(setting.getCsjRewardName()) //奖励的名称
-                .setRewardAmount(setting.getCsjRewardAmount())   //奖励的数量
                 //必传参数，表来标识应用侧唯一用户；若非服务器回调模式或不需sdk透传
                 //可设置为空字符串
                 .setUserID(setting.getCsjUserId())
                 .setOrientation(setting.getCsjOrientation())  //设置期望视频播放的方向，为TTAdConstant.HORIZONTAL或TTAdConstant.VERTICAL
                 .setMediaExtra(setting.getCsjMediaExtra()) //用户透传的信息，可不传
-                .setDownloadType(EasyCsjManger.getInstance().csj_downloadType)
                 .build();
         ttAdNative.loadRewardVideoAd(adSlot, this);
     }
@@ -156,29 +154,18 @@ public class CsjRewardVideoAdapter extends EARewardCustomAdapter implements TTAd
 
             @Override
             public void onRewardVerify(boolean rewardVerify, int rewardAmount, String rewardName, int errorCode, String errMsg) {
-                try {
-                    EALog.high(TAG + "onRewardVerify; rewardVerify = " + rewardVerify + ",rewardAmount = " + rewardAmount + ",rewardName = " + rewardName + " errorCode:" + errorCode + " errMsg:" + errMsg);
+                EALog.high(TAG + " onRewardVerify");
+            }
 
-                    EARewardServerCallBackInf inf = new EARewardServerCallBackInf();
-                    EARewardServerCallBackInf.CsjRewardInf csjRewardInf = new EARewardServerCallBackInf.CsjRewardInf();
-                    csjRewardInf.rewardVerify = rewardVerify;
-                    csjRewardInf.rewardAmount = rewardAmount;
-                    csjRewardInf.rewardName = rewardName;
-                    csjRewardInf.errorCode = errorCode;
-                    csjRewardInf.errMsg = errMsg;
-                    inf.csjInf = csjRewardInf;
-                    setting.postRewardServerInf(inf, sdkSupplier);
-                } catch (Throwable e) {
-                    e.printStackTrace();
-                }
-
-                if (rewardVerify) {
-                    if (null != setting) {
-                        setting.adapterAdReward(sdkSupplier);
-                    }
-                } else if (errorCode != 0) {//如果有异常信息，是否进行异常回调？
-                    EALog.e("onRewardVerify error ，Code = " + errorCode + "  errMsg" + errMsg);
-                }
+            @Override
+            public void onRewardArrived(boolean isRewardValid, int rewardType, Bundle extraInfo) {
+                EALog.high(TAG + " onRewardArrived");
+                int mServerErrorCode = extraInfo.getInt(TTRewardVideoAd.REWARD_EXTRA_KEY_ERROR_CODE);
+                String mServerErrorMsg = extraInfo.getString(TTRewardVideoAd.REWARD_EXTRA_KEY_ERROR_MSG);
+                String mRewardName = extraInfo.getString(TTRewardVideoAd.REWARD_EXTRA_KEY_REWARD_NAME);
+                int mRewardAmount = extraInfo.getInt(TTRewardVideoAd.REWARD_EXTRA_KEY_REWARD_AMOUNT);
+                float mRewardPropose = extraInfo.getFloat(TTRewardVideoAd.REWARD_EXTRA_KEY_REWARD_PROPOSE);
+                onAdItemRewardVerify(isRewardValid, rewardType, mRewardAmount, mRewardName, mServerErrorCode, mServerErrorMsg, mRewardPropose);
             }
 
             @Override
@@ -190,5 +177,31 @@ public class CsjRewardVideoAdapter extends EARewardCustomAdapter implements TTAd
             }
         });
         ttRewardVideoAd.showRewardVideoAd(getActivity());
+    }
+
+    public void onAdItemRewardVerify(boolean rewardVerify, int rewardType, int rewardAmount, String rewardName, int errorCode, String errMsg, float mRewardPropose) {
+        try {
+            EALog.high(TAG + "onRewardVerify; rewardVerify = " + rewardVerify + ",rewardAmount = " + rewardAmount + ",rewardName = " + rewardName + " errorCode:" + errorCode + " errMsg:" + errMsg);
+
+            EARewardServerCallBackInf inf = new EARewardServerCallBackInf();
+            EARewardServerCallBackInf.CsjRewardInf csjRewardInf = new EARewardServerCallBackInf.CsjRewardInf();
+            csjRewardInf.rewardVerify = rewardVerify;
+            csjRewardInf.rewardAmount = rewardAmount;
+            csjRewardInf.rewardName = rewardName;
+            csjRewardInf.errorCode = errorCode;
+            csjRewardInf.errMsg = errMsg;
+            inf.csjInf = csjRewardInf;
+            setting.postRewardServerInf(inf, sdkSupplier);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+
+        if (rewardVerify) {
+            if (null != setting) {
+                setting.adapterAdReward(sdkSupplier);
+            }
+        } else if (errorCode != 0) {//如果有异常信息，是否进行异常回调？
+            EALog.e("onRewardVerify error ，Code = " + errorCode + "  errMsg" + errMsg);
+        }
     }
 }

@@ -67,7 +67,9 @@ public class MainActivity extends BaseActivity {
             dialog.show();
         }
 
-        version.setText("版本号：EasyAds聚合SDK：v" + EasyAds.getVersion() + "\n穿山甲：v" + TTAdSdk.getAdManager().getSDKVersion() + "    优量汇：v" + SDKStatus.getSDKVersion() +
+        version.setText("版本号：EasyAds聚合SDK：v" + EasyAds.getVersion() +
+                "\n穿山甲：v" + TTAdSdk.getAdManager().getSDKVersion() +
+                "    优量汇：v" + SDKStatus.getSDKVersion() +
                 "    百度：v" + AdSettings.getSDKVersion() + "    快手：v" + KsAdSDK.getSDKVersion());
 
     }

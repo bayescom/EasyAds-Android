@@ -170,7 +170,6 @@ public class CsjBannerAdapter extends EABannerCustomAdapter implements TTAdNativ
                 // 可选参数 设置是否支持deeplink
                 .setSupportDeepLink(true)
                 //请求原生广告时候需要设置，参数为TYPE_BANNER或TYPE_INTERACTION_AD
-                .setDownloadType(EasyCsjManger.getInstance().csj_downloadType)
                 .build();
         ttAdNative.loadBannerExpressAd(adSlot, this);
     }
