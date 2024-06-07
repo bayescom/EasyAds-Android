@@ -29,9 +29,22 @@ public class KSFullScreenVideoAdapter extends EAFullScreenCustomAdapter implemen
 
     @Override
     protected void doLoadAD() {
-        //初始化快手SDK
-        boolean initOK = KSUtil.initAD(this);
-        if (initOK) {
+        KSUtil.initAD(this, new KSUtil.InitListener() {
+            @Override
+            public void success() {
+                //只有在成功初始化以后才能调用load方法，否则穿山甲会抛错导致无法进行广告展示
+                startLoad();
+            }
+
+            @Override
+            public void fail(String code, String msg) {
+                handleFailed(code, msg);
+            }
+        });
+
+    }
+
+    private void startLoad() {
             KsScene scene = new KsScene.Builder(KSUtil.getADID(sdkSupplier)).build(); // 此为测试posId，请联系快手平台申请正式posId
             KsAdSDK.getLoadManager().loadFullScreenVideoAd(scene, new KsLoadManager.FullScreenVideoAdListener() {
                 @Override
@@ -70,7 +83,6 @@ public class KSFullScreenVideoAdapter extends EAFullScreenCustomAdapter implemen
             });
         }
 
-    }
 
     @Override
     protected void doShowAD() {

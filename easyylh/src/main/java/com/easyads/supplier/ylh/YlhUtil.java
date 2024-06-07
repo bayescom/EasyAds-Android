@@ -40,8 +40,24 @@ public class YlhUtil implements EASplashPlusManager.ZoomCall {
             }
             EALog.simple(TAG + " 开始初始化SDK");
 
-            GDTAdSdk.init(adapter.getActivity().getApplicationContext(), resultAppID);
+            //使用新初始化方法
+            GDTAdSdk.initWithoutStart(adapter.getActivity().getApplicationContext(), resultAppID); // 该接口不会采集用户信息
+// 调用initWithoutStart后请尽快调用start，否则可能影响广告填充，造成收入下降
+            GDTAdSdk.start(new GDTAdSdk.OnStartListener() {
+                @Override
+                public void onStartSuccess() {
+                    EALog.simple(TAG + " onStartSuccess");
 
+                    // 推荐开发者在onStartSuccess回调后开始拉广告
+                    EasyAdsManger.getInstance().hasYLHInit = true;
+                }
+
+                @Override
+                public void onStartFailed(Exception e) {
+                    EALog.e(TAG + "  onStartFailed:" + e.toString());
+                    EasyAdsManger.getInstance().hasYLHInit = false;
+                }
+            });
             EasyAdsManger.getInstance().hasYLHInit = true;
             EasyAdsManger.getInstance().lastYLHAID = resultAppID;
         } catch (Throwable e) {

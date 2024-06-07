@@ -44,7 +44,7 @@ repositories {
 
         //引入方式1：gradle线上，简单快速
         //EasyAds sdk（必须）
-//        implementation "com.github.bayescom:EasyAds-Android:1.1"
+//        implementation "com.github.bayescom:EasyAds-Android:1.2.0"
 
         //穿山甲广告SDK(建议)
 //        implementation "com.pangle.cn:mediation-sdk:6.1.2.5"
@@ -57,7 +57,7 @@ repositories {
 
 // 引入方式2：library方式引入，可以自己修改代码。注意：两种引入方式互斥，不要同时引入
         implementation project(path: ':easyads')
-//
+////
         implementation project(path: ':easyylh')
         implementation project(path: ':easycsj')
         implementation project(path: ':easybd')

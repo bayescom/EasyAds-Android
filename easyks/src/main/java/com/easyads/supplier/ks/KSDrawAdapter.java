@@ -26,8 +26,22 @@ public class KSDrawAdapter extends EADrawCustomAdapter implements KsDrawAd.AdInt
 
     @Override
     protected void doLoadAD() {
+        KSUtil.initAD(this, new KSUtil.InitListener() {
+            @Override
+            public void success() {
+                //只有在成功初始化以后才能调用load方法，否则穿山甲会抛错导致无法进行广告展示
+                startLoad();
+            }
 
-        if (KSUtil.initAD(this)) {
+            @Override
+            public void fail(String code, String msg) {
+                handleFailed(code, msg);
+            }
+        });
+
+    }
+
+    private void startLoad() {
             //场景设置
             KsScene scene = new KsScene.Builder(KSUtil.getADID(sdkSupplier)).build();
             KsAdSDK.getLoadManager().loadDrawAd(scene, new KsLoadManager.DrawAdListener() {
@@ -60,7 +74,7 @@ public class KSDrawAdapter extends EADrawCustomAdapter implements KsDrawAd.AdInt
                 }
             });
         }
-    }
+
 
 
     @Override
