@@ -65,6 +65,26 @@ public class BDSplashAdapter extends EASplashCustomAdapter implements SplashInte
         EALog.high(TAG + "onAdPresent");
 
         //进行辅助判断倒计时操作的定时任务
+//        try {
+//            handleExposure();
+//
+//            new Handler().postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    isCountingEnd = true;
+//                }
+//            }, 4800);
+//        } catch (Throwable e) {
+//            e.printStackTrace();
+//        }
+
+    }
+
+    @Override
+    public void onAdExposed() {
+        EALog.high(TAG + "onAdExposed");
+
+        //进行辅助判断倒计时操作的定时任务
         try {
             handleExposure();
 
@@ -116,6 +136,14 @@ public class BDSplashAdapter extends EASplashCustomAdapter implements SplashInte
                 mSplashSetting.adapterDidSkip(sdkSupplier);
             }
         }
+    }
+
+    @Override
+    public void onAdSkip() {
+        EALog.high(TAG + "onAdSkip");
+
+        if (mSplashSetting != null)
+            mSplashSetting.adapterDidSkip(sdkSupplier);
     }
 
     @Override

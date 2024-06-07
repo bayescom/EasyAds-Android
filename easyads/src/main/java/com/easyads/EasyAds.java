@@ -1,13 +1,12 @@
 package com.easyads;
 
-import com.easyads.core.BuildConfig;
-import com.easyads.model.EALogLevel;
+import com.easyads.core.BuildConfig;import com.easyads.model.EALogLevel;
 
 public class EasyAds {
 
     //获取聚合SDK版本号
     public static String getVersion() {
-        return BuildConfig.VERSION_NAME;
+        return "1.1.0";
     }
 
     //设置debug状态，同时可设置log打印等级

@@ -9,7 +9,7 @@ group = 'com.github.bayescom'
 //maven依赖的项目名称
 def pomName = "easyads-ks"
 
-def VersionCode = 3334
+def VersionCode = 3363
 def VersionName = "${rootProject.ext.EasyAds_version}_" + VersionCode
 
 def outputName = pomName + "_" + VersionName + ".aar"

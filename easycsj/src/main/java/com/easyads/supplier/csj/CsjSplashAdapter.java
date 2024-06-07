@@ -104,7 +104,7 @@ public class CsjSplashAdapter extends EASplashCustomAdapter {
         TTAdNative ttAdNative = CsjUtil.getADManger(this).createAdNative(getActivity());
         ttAdNative.loadSplashAd(adSlot, new TTAdNative.CSJSplashAdListener() {
             @Override
-            public void onSplashLoadSuccess() {
+            public void onSplashLoadSuccess(CSJSplashAd splashAd) {
                 EALog.high(TAG + "onSplashLoadSuccess");
 
             }

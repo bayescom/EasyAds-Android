@@ -10,8 +10,8 @@ group = 'com.github.bayescom'
 def pomName = "easyads-gdt"
 def VersionCode = 4492
 def VersionName = "${rootProject.ext.EasyAds_version}_${VersionCode}"
-
-def outputName = pomName + "_" + VersionName + ".aar"
+//
+//def outputName = pomName + "_" + VersionName + ".aar"
 
 android {
     compileSdkVersion 29
@@ -54,13 +54,17 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    def aarName = "GDTSDK_${VersionCode}"
+//    def aarName = "GDTSDK_${VersionCode}"
+//    def version = '4.542.1412'
+
     //发布时用embed捆绑aar包
-    if (rootProject.ext.releaseSDK) {
-        embed(name: aarName, ext: 'aar')
-    } else {
-        api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
-    }
+//    if (rootProject.ext.releaseSDK) {
+//        embed(name: aarName, ext: 'aar')
+//    } else {
+        api "com.qq.e.union:union:4.575.1445"
+
+//        api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+//    }
     compileOnly project(path: ':easyads')
 
 }

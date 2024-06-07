@@ -111,6 +111,12 @@ public class BDNativeExpressAdapter extends EANativeExpressCustomAdapter impleme
                         public void onADPrivacyClick() {
                             EALog.high(TAG + "onADPrivacyClick");
                         }
+
+                        @Override
+                        public void onADFunctionClick() {
+                            EALog.high(TAG + "onADFunctionClick");
+
+                        }
                     });
 
                 }
@@ -145,12 +151,12 @@ public class BDNativeExpressAdapter extends EANativeExpressCustomAdapter impleme
     }
 
     @Override
-    public void onNativeFail(int i, String s) {
+    public void onNativeFail(int i, String s,NativeResponse response) {
         handleFailed(i + "", s);
     }
 
     @Override
-    public void onNoAd(int i, String s) {
+    public void onNoAd(int i, String s,NativeResponse response) {
         handleFailed(i + "", s);
     }
 
