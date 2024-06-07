@@ -27,47 +27,58 @@ public class KSSplashAdapter extends EASplashCustomAdapter implements KsSplashSc
 
     @Override
     protected void doLoadAD() {
+        KSUtil.initAD(this, new KSUtil.InitListener() {
+            @Override
+            public void success() {
+                //只有在成功初始化以后才能调用load方法，否则穿山甲会抛错导致无法进行广告展示
+                startLoad();
+            }
 
-        //初始化快手SDK
-        boolean initOK = KSUtil.initAD(this);
-        if (initOK) {
-            //场景设置
-            KsScene scene = new KsScene.Builder(KSUtil.getADID(sdkSupplier)).build(); // 此为测试posId，请联系快手平台申请正式posId
-            KsAdSDK.getLoadManager().loadSplashScreenAd(scene, new KsLoadManager.SplashScreenAdListener() {
-                @Override
-                public void onError(int code, String msg) {
-                    EALog.high(TAG + " onError ");
+            @Override
+            public void fail(String code, String msg) {
+                handleFailed(code, msg);
+            }
+        });
 
-                    handleFailed(code, msg);
-                }
+    }
 
-                @Override
-                public void onRequestResult(int adNumber) {
-                    EALog.high(TAG + "onRequestResult，广告填充数量：" + adNumber);
-                }
+    private void startLoad() {
+        //场景设置
+        KsScene scene = new KsScene.Builder(KSUtil.getADID(sdkSupplier)).build(); // 此为测试posId，请联系快手平台申请正式posId
+        KsAdSDK.getLoadManager().loadSplashScreenAd(scene, new KsLoadManager.SplashScreenAdListener() {
+            @Override
+            public void onError(int code, String msg) {
+                EALog.high(TAG + " onError ");
 
-                @Override
-                public void onSplashScreenAdLoad(@NonNull KsSplashScreenAd splashScreenAd) {
-                    EALog.high(TAG + "onSplashScreenAdLoad");
+                handleFailed(code, msg);
+            }
 
-                    try {
-                        if (splashScreenAd == null) {
-                            String nMsg = TAG + " KsSplashScreenAd null";
-                            handleFailed(EasyAdError.ERROR_DATA_NULL, nMsg);
-                            return;
-                        }
-                        splashAd = splashScreenAd;
+            @Override
+            public void onRequestResult(int adNumber) {
+                EALog.high(TAG + "onRequestResult，广告填充数量：" + adNumber);
+            }
 
-                        handleSucceed();
+            @Override
+            public void onSplashScreenAdLoad(@NonNull KsSplashScreenAd splashScreenAd) {
+                EALog.high(TAG + "onSplashScreenAdLoad");
 
-                    } catch (Throwable e) {
-                        e.printStackTrace();
-                        handleFailed(EasyAdError.parseErr(EasyAdError.ERROR_EXCEPTION_LOAD));
+                try {
+                    if (splashScreenAd == null) {
+                        String nMsg = TAG + " KsSplashScreenAd null";
+                        handleFailed(EasyAdError.ERROR_DATA_NULL, nMsg);
+                        return;
                     }
-                }
-            });
+                    splashAd = splashScreenAd;
 
-        }
+                    handleSucceed();
+
+                } catch (Throwable e) {
+                    e.printStackTrace();
+                    handleFailed(EasyAdError.parseErr(EasyAdError.ERROR_EXCEPTION_LOAD));
+                }
+            }
+        });
+
     }
 
     @Override

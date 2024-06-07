@@ -27,10 +27,22 @@ public class KSNativeExpressAdapter extends EANativeExpressCustomAdapter {
 
     @Override
     protected void doLoadAD() {
+        KSUtil.initAD(this, new KSUtil.InitListener() {
+            @Override
+            public void success() {
+                //只有在成功初始化以后才能调用load方法，否则穿山甲会抛错导致无法进行广告展示
+                startLoad();
+            }
 
-        //初始化快手SDK
-        boolean initOK = KSUtil.initAD(this);
-        if (initOK) {
+            @Override
+            public void fail(String code, String msg) {
+                handleFailed(code, msg);
+            }
+        });
+
+    }
+
+    private void startLoad() {
             int num = 1;
             KsScene scene = new KsScene.Builder(KSUtil.getADID(sdkSupplier)).adNum(num).build(); // 此为测试posId，请联系快手平台申请正式posId
             KsAdSDK.getLoadManager().loadConfigFeedAd(scene, new KsLoadManager.FeedAdListener() {
@@ -101,7 +113,6 @@ public class KSNativeExpressAdapter extends EANativeExpressCustomAdapter {
 
 
         }
-    }
 
 
     @Override

@@ -91,7 +91,7 @@ public class YlhNativeExpressAdapter extends EANativeExpressCustomAdapter {
                 .build();
         nativeExpressAd.setVideoOption(option);
         nativeExpressAd.setMaxVideoDuration(setting.getYlhMaxVideoDuration());
-        nativeExpressAd.setDownAPPConfirmPolicy(DownAPPConfirmPolicy.NOConfirm);
+//        nativeExpressAd.setDownAPPConfirmPolicy(DownAPPConfirmPolicy.NOConfirm);
         nativeExpressAd.loadAD(1);
 
     }

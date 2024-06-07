@@ -35,7 +35,7 @@ public class BDRewardVideoAdapter extends EARewardCustomAdapter implements Rewar
             // 在跳过按钮后展示弹框
             mRewardVideoAd.setShowDialogOnSkip(true);
             // 展示奖励领取倒计时提示
-            mRewardVideoAd.setUseRewardCountdown(true);
+//            mRewardVideoAd.setUseRewardCountdown(true);
 
             mRewardVideoAd.show();
         }

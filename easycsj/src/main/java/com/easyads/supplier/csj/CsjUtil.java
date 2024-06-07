@@ -108,11 +108,11 @@ public class CsjUtil implements EASplashPlusManager.ZoomCall {
                     .appName("")//
                     .titleBarTheme(TTAdConstant.TITLE_BAR_THEME_LIGHT)
                     .allowShowNotify(true) //是否允许sdk展示通知栏提示
-                    .allowShowPageWhenScreenLock(true) //是否在锁屏场景支持展示广告落地页
+//                    .allowShowPageWhenScreenLock(true) //是否在锁屏场景支持展示广告落地页
                     .debug(EasyAdsManger.getInstance().debug) //测试阶段打开，可以通过日志排查问题，上线时去除该调用
                     .directDownloadNetworkType(directDownloadNetworkType) //允许直接下载的网络状态集合
                     .supportMultiProcess(supportMP) //是否支持多进程，true支持
-                    .asyncInit(true) //如果是主线程使用异步
+//                    .asyncInit(true) //如果是主线程使用异步
                     .build();
 
             //主线程和非主线程逻辑分开
@@ -135,33 +135,63 @@ public class CsjUtil implements EASplashPlusManager.ZoomCall {
     }
 
     private static void doInit(Context context, TTAdConfig config, final InitListener listener, final String appID) {
-        TTAdSdk.init(context.getApplicationContext(), config
-                , new TTAdSdk.InitCallback() {
-                    @Override
-                    public void success() {
-                        EALog.simple("csj init success");
+        try {
+            TTAdSdk.init(context.getApplicationContext(), config
+    //                , new TTAdSdk.InitCallback() {
+    //                    @Override
+    //                    public void success() {
+    //                        EALog.simple("csj init success");
+    //
+    //                        EAUtil.switchMainThread(new BaseEnsureListener() {
+    //                            @Override
+    //                            public void ensure() {
+    //                                if (listener != null) {
+    //                                    listener.success();
+    //                                }
+    //                            }
+    //                        });
+    //                        EasyAdsManger.getInstance().lastCSJAID = appID;
+    //                        EasyAdsManger.getInstance().hasCSJInit = true;
+    //                    }
+    //
+    //                    @Override
+    //                    public void fail(int code, String msg) {
+    //                        EALog.e("csj init fail : code = " + code + " msg = " + msg);
+    //                        if (listener != null) {
+    //                            listener.fail(EasyAdError.ERROR_CSJ_INIT_FAILED, msg);
+    //                        }
+    //                        EasyAdsManger.getInstance().hasCSJInit = false;
+    //                    }
+    //                }
+                    );
 
-                        EAUtil.switchMainThread(new BaseEnsureListener() {
-                            @Override
-                            public void ensure() {
-                                if (listener != null) {
-                                    listener.success();
-                                }
-                            }
-                        });
-                        EasyAdsManger.getInstance().lastCSJAID = appID;
-                        EasyAdsManger.getInstance().hasCSJInit = true;
-                    }
+            TTAdSdk.start(new TTAdSdk.Callback() {
+                @Override
+                public void success() {
+                    EALog.simple("csj init success");
 
-                    @Override
-                    public void fail(int code, String msg) {
-                        EALog.e("csj init fail : code = " + code + " msg = " + msg);
-                        if (listener != null) {
-                            listener.fail(EasyAdError.ERROR_CSJ_INIT_FAILED, msg);
-                        }
-                        EasyAdsManger.getInstance().hasCSJInit = false;
+                    if (listener != null) {
+                        listener.success();
                     }
-                });
+                    EasyAdsManger.getInstance().lastCSJAID = appID;
+                    EasyAdsManger.getInstance().hasCSJInit = true;
+                }
+
+                @Override
+                public void fail(int code, String msg) {
+                    EALog.e("csj init fail : code = " + code + " msg = " + msg);
+                    if (listener != null) {
+                        listener.fail(code+"", msg);
+                    }
+                    EasyAdsManger.getInstance().hasCSJInit = false;
+                }
+            });
+        } catch (Throwable e) {
+            e.printStackTrace();
+            if (listener != null) {
+                listener.fail(EasyAdError.ERROR_CSJ_INIT_FAILED, "csj init exception");
+            }
+        }
     }
 
 

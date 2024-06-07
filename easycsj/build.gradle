@@ -70,7 +70,8 @@ dependencies {
     if (rootProject.ext.releaseSDK) {
         embed(name: aarName, ext: 'aar')
     } else {
-        api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+//        api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+        api "com.pangle.cn:mediation-sdk:6.1.2.5"
     }
 
     compileOnly project(path: ':easyads')
