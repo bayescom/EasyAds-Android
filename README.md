@@ -1,3 +1,11 @@
+![levelup](levelup.jpg)
+
+# 🚀🚀EasyAds项目全面升级，Pro版本全面开源，搭建媒体属于自己的聚合SDK管理平台。
+# 了解更多请点击: [EasyAds Pro 主页](http://easyads-pro.bayescom.cn/)，开启您的安全、高效、全面的商业化之路。
+
+--------------------------------------------
+**❗️❗原EasyAds项目将停止维护❗️❗**
+
 # EasyAds-Android 快速指引
 [![](https://jitpack.io/v/bayescom/EasyAds-Android.svg)](https://jitpack.io/#bayescom/EasyAds-Android)
 
