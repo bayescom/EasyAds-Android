@@ -99,6 +99,9 @@ public class EasyADController {
 
             @Override
             public void onAdFailed(EasyAdError error) {
+                if (callBack != null)
+                    callBack.jumpMain();
+
                 logAndToast(mActivity, "广告加载失败 code=" + error.code + " msg=" + error.msg);
             }
 
@@ -120,6 +123,7 @@ public class EasyADController {
         if (cusHuaWei) {
             easySplash.addCustomSupplier("hw", new HuaWeiSplashAdapter(new SoftReference<>(mActivity), easySplash));
         }
+//        easySplash.getSupplierInf();
         //必须：设置策略信息
         easySplash.setData(getJson(mActivity, jsonFileName));
         //必须：请求并展示广告
